@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ปฏิทินผลผลิตสินค้าเกษตร อ.พุทธมณฑล จ.นครปฐม | สศก. 2569 และคาดการณ์ 2570</title>
+  
+  <!-- Google Fonts: Prompt & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #155e38;
+      --primary-dark: #0f4327;
+      --primary-light: #22a060;
+      --primary-subtle: #e8f5ed;
+      --accent-gold: #d97706;
+      --accent-blue: #0284c7;
+      
+      --bg-page: #f6f8f6;
+      --bg-surface: #ffffff;
+      --border-color: #e2e8e3;
+      --border-focus: #155e38;
+      
+      --text-main: #1f2937;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px -2px rgba(16, 52, 33, 0.08);
+      --shadow-lg: 0 10px 25px -3px rgba(16, 52, 33, 0.12);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Prompt', 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation Bar */
+    .top-nav {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #155e38, #22a060);
+      color: white;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(21, 94, 56, 0.25);
+    }
+    .brand-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    .btn-outline {
+      border-color: var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: #f1f5f2;
+      border-color: #cbd5e1;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0d3b23 0%, #175e39 60%, #1e7a4a 100%);
+      color: white;
+      padding: 36px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .hero-title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .hero-desc {
+      font-size: 15px;
+      opacity: 0.92;
+      max-width: 860px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Forecast Highlight Banner */
+    .forecast-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 20px 0 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .forecast-banner-icon {
+      font-size: 24px;
+      color: #2563eb;
+      margin-top: 2px;
+    }
+    .forecast-banner-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 4px;
+    }
+    .forecast-banner-desc {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: -24px auto 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .kpi-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .kpi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .kpi-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .kpi-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      font-family: 'Inter', 'Prompt', sans-serif;
+    }
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Controls & Filter Bar */
+    .filter-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+    }
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .filter-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+    .pill-group {
+      display: inline-flex;
+      background: #eef3ef;
+      padding: 3px;
+      border-radius: var(--radius-sm);
+    }
+    .pill-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .pill-btn.active {
+      background: var(--bg-surface);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+    }
+    .pill-btn.active-forecast {
+      background: #2563eb;
+      color: white;
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+    }
+    .search-box {
+      position: relative;
+      min-width: 240px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 8px 14px 8px 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    /* Sections */
+    .section-title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5ede7;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Matrix / Heatmap Table */
+    .matrix-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+      overflow-x: auto;
+    }
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 950px;
+    }
+    .calendar-table th {
+      background: #f1f6f2;
+      color: #1e3a2b;
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 600;
+      border: 1px solid #e1ebe3;
+      white-space: nowrap;
+    }
+    .calendar-table th.col-crop {
+      text-align: left;
+      min-width: 180px;
+      padding-left: 14px;
+    }
+    .calendar-table th.col-tambon { min-width: 90px; }
+    .calendar-table th.col-total { min-width: 90px; }
+    .calendar-table td {
+      padding: 8px 6px;
+      border: 1px solid #e8ede9;
+      text-align: center;
+      vertical-align: middle;
+      font-family: 'Inter', 'Prompt', sans-serif;
+    }
+    .calendar-table td.cell-crop {
+      text-align: left;
+      font-weight: 500;
+      padding-left: 14px;
+      color: #1e293b;
+      cursor: pointer;
+    }
+    .calendar-table td.cell-crop:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .calendar-table tr:hover { background: #fafdfb; }
+
+    /* Heatmap cell intensities */
+    .heat-0 { background: #ffffff; color: #cbd5e1; }
+    .heat-1 { background: #dcfce7; color: #166534; font-weight: 600; }
+    .heat-2 { background: #86efac; color: #14532d; font-weight: 600; }
+    .heat-3 { background: #4ade80; color: #0f3d20; font-weight: 700; }
+    .heat-4 { background: #22c55e; color: #ffffff; font-weight: 700; }
+    .heat-peak {
+      background: #15803d;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px #166534;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .badge-tambon { background: #f1f5f9; color: #475569; }
+    .badge-rice { background: #dcfce7; color: #166534; }
+    .badge-fruit { background: #fef3c7; color: #b45309; }
+    .badge-veg { background: #e0f2fe; color: #0369a1; }
+    .badge-year { background: #dbeafe; color: #1e40af; }
+
+    /* Chart Card */
+    .chart-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+    .chart-container {
+      position: relative;
+      height: 320px;
+      width: 100%;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .crop-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .crop-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .card-yield-box {
+      background: #f8faf8;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #eef3ee;
+    }
+    .yield-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: 'Inter', 'Prompt', sans-serif;
+    }
+    .yield-unit {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+    .harvest-timeline-bar { margin-top: 6px; }
+    .timeline-months-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2px;
+      margin-top: 4px;
+    }
+    .timeline-dot {
+      height: 6px;
+      border-radius: 2px;
+      background: #e2e8f0;
+    }
+    .timeline-dot.active { background: var(--primary-light); }
+    .timeline-dot.peak { background: var(--primary-dark); }
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      padding: 20px;
+    }
+    .modal-backdrop.open { opacity: 1; visibility: visible; }
+    .modal-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    /* Committee Section */
+    .committee-box {
+      background: linear-gradient(135deg, #f0f7f3 0%, #e2efe6 100%);
+      border: 1px solid #cbdccf;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .committee-box h3 {
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .committee-list {
+      list-style-type: decimal;
+      padding-left: 20px;
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 22px; }
+      .filter-row { flex-direction: column; align-items: stretch; }
+      .filter-groups { flex-direction: column; align-items: stretch; }
+      .search-box { width: 100%; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <div class="brand-text">
+          <h1>ปฏิทินผลผลิตสินค้าเกษตร อ.พุทธมณฑล</h1>
+          <p>ระบบฐานข้อมูลเพื่อการกลั่นกรอง สศก. พ.ศ. 2569 และคาดการณ์ 2570</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="../ปฏิทินผลผลิต_สศก_พุทธมณฑล/ชุดประชุม_กลั่นกรอง_2569/หนังสือเวียน_ขอความเห็นชอบปฏิทินผลผลิต.html" target="_blank" class="btn btn-outline">
+          <i class="fa-solid fa-file-contract"></i> หนังสือเวียน
+        </a>
+        <button class="btn btn-primary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> พิมพ์เอกสาร
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-calendar-check"></i> รอบรายงานปี 2569 และคาดการณ์ปี 2570
+      </div>
+      <h2 class="hero-title">ปฏิทินช่วงเวลาเก็บเกี่ยวและปริมาณผลผลิตสินค้าเกษตร (พืช)</h2>
+      <p class="hero-desc">
+        อำเภอพุทธมณฑล จังหวัดนครปฐม (ตำบลคลองโยง, มหาสวัสดิ์, ศาลายา) ข้อมูลรวม 44 รายการสินค้า จัดทำขึ้นเพื่อให้คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพิจารณากลั่นกรองและให้ความเห็นชอบ ทั้งรอบปีปัจจุบันและประมาณการปีถัดไป
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- KPI Summary Cards -->
+    <section class="kpi-grid" id="kpi-container">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title" id="kpi-title-total">ผลผลิตรวมทั้งปี (2569)</span>
+          <div class="kpi-icon" style="background:#e8f5ed; color:#155e38;">
+            <i class="fa-solid fa-weight-hanging"></i>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-total-yield">18,114.07 <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span></div>
+        <div class="kpi-sub" id="kpi-sub-total"><i class="fa-solid fa-check-circle" style="color:#059669;"></i> คาดการณ์ปี 2570: 18,114.07 ตัน</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">ข้าวนาปี & ข้าวนาปรัง</span>
+          <div class="kpi-icon" style="background:#fef3c7; color:#b45309;">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-rice-yield">17,250.00 <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span></div>
+        <div class="kpi-sub"><i class="fa-solid fa-percent" style="color:#b45309;"></i> 95.2% ของผลผลิตพืชทั้งอำเภอ</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">พืชผัก & ไม้ผลไม้ยืนต้น</span>
+          <div class="kpi-icon" style="background:#e0f2fe; color:#0284c7;">
+            <i class="fa-solid fa-apple-whole"></i>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-other-yield">864.07 <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span></div>
+        <div class="kpi-sub"><i class="fa-solid fa-layer-group" style="color:#0284c7;"></i> ผักชีฝรั่ง, มะม่วง, มะนาว, ส้มโอ ฯลฯ</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">การกระจายผลผลิต</span>
+          <div class="kpi-icon" style="background:#f3e8ff; color:#7e22ce;">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+        </div>
+        <div class="kpi-value" style="font-size:18px;">
+          <span style="color:#059669;">ใน จ. 20.7%</span> / <span style="color:#d97706;">นอก จ. 79.3%</span>
+        </div>
+        <div class="kpi-sub"><i class="fa-solid fa-shop"></i> ใน จ. 3,742 ตัน / นอก จ. 14,372 ตัน</div>
+      </div>
+    </section>
+
+    <!-- Forecast Alert Banner -->
+    <section class="forecast-banner" id="forecastBanner">
+      <div class="forecast-banner-icon">
+        <i class="fa-solid fa-lightbulb"></i>
+      </div>
+      <div>
+        <div class="forecast-banner-title">
+          📌 ข้อมูลการคาดการณ์ปี 2570 (Forecast): ตั้งต้นที่ 18,114.07 ตัน ตามหลักการ สศก.
+        </div>
+        <div class="forecast-banner-desc">
+          ตามคู่มือ สศก. ปี 2569 หน้า 17 และ 36 กำหนดให้ประมาณการปีถัดไป (2570) ควบคู่กับปีปัจจุบัน โดยระบบตั้งค่าฐานผลผลิตและสัดส่วนรายเดือนคงที่เท่าปี 2569 เพื่อให้<strong>คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพิจารณากลั่นกรอง</strong> หากมีข้อมูลแนวโน้มภัยพิบัติ แหล่งน้ำต้นทุน หรือการปรับเปลี่ยนพื้นที่ปลูก คณะทำงานฯ สามารถมีมติปรับเพิ่ม/ลดตัวเลขก่อนนำส่งจังหวัดได้
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Bar -->
+    <section class="filter-card">
+      <div class="filter-row">
+        <div class="filter-groups">
+          <div>
+            <span class="filter-label"><i class="fa-solid fa-clock-rotate-left"></i> ปีข้อมูล/มุมมอง:</span>
+            <div class="pill-group" id="year-toggle">
+              <button class="pill-btn active" data-year="2569">ปีปัจจุบัน (2569)</button>
+              <button class="pill-btn" data-year="2570">🔮 คาดการณ์ (2570)</button>
+              <button class="pill-btn" data-year="compare">⚖️ เปรียบเทียบ 2 ปี</button>
+            </div>
+          </div>
+
+          <div>
+            <span class="filter-label"><i class="fa-solid fa-map-location-dot"></i> ตำบล:</span>
+            <div class="pill-group" id="tambon-filter">
+              <button class="pill-btn active" data-tambon="all">ทั้งหมด (3 ตำบล)</button>
+              <button class="pill-btn" data-tambon="คลองโยง">คลองโยง</button>
+              <button class="pill-btn" data-tambon="มหาสวัสดิ์">มหาสวัสดิ์</button>
+              <button class="pill-btn" data-tambon="ศาลายา">ศาลายา</button>
+            </div>
+          </div>
+
+          <div>
+            <span class="filter-label"><i class="fa-solid fa-shapes"></i> กลุ่มพืช:</span>
+            <div class="pill-group" id="category-filter">
+              <button class="pill-btn active" data-category="all">ทั้งหมด</button>
+              <button class="pill-btn" data-category="ข้าว">ข้าว</button>
+              <button class="pill-btn" data-category="ไม้ผล/ไม้ยืนต้น">ไม้ผล</button>
+              <button class="pill-btn" data-category="พืชผัก/สมุนไพร">พืชผัก/สมุนไพร</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="ค้นหาชื่อพืช หรือตำบล...">
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Chart -->
+    <section class="chart-card">
+      <div class="section-title-wrap">
+        <div>
+          <h3 class="section-title"><i class="fa-solid fa-chart-column"></i> แผนภูมิแนวโน้มผลผลิตเก็บเกี่ยวรายเดือน</h3>
+          <p class="section-sub" id="chart-sub-text">แสดงปริมาณผลผลิตรวมจำแนกรายเดือน (ม.ค. - ธ.ค.) เพื่อวิเคราะห์ช่วงผลผลิตออกสู่ตลาดสูงสุด (Peak Harvest)</p>
+        </div>
+        <div id="chart-summary-badge" class="badge badge-rice" style="font-size:13px; padding:6px 12px;">
+          สูงสุด: กันยายน (5,700 ตัน)
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="monthlyChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Interactive Heatmap / Harvest Matrix -->
+    <section class="matrix-card">
+      <div class="section-title-wrap">
+        <div>
+          <h3 class="section-title"><i class="fa-solid fa-table-cells"></i> ปฏิทินช่วงเก็บเกี่ยวรายพืช (Harvest Calendar Matrix)</h3>
+          <p class="section-sub" id="matrix-sub-text">ช่องสีเขียวระบุเดือนที่มีการเก็บเกี่ยว (ความเข้มตามปริมาณผลผลิต ตัน) • คลิกที่ชื่อพืชเพื่อดูรายละเอียด</p>
+        </div>
+        <div style="font-size:12px; color:var(--text-muted); display:flex; gap:10px; align-items:center;">
+          <span>ระดับผลผลิต:</span>
+          <span style="background:#dcfce7; padding:2px 8px; border-radius:4px; color:#166534;">น้อย</span>
+          <span style="background:#86efac; padding:2px 8px; border-radius:4px; color:#14532d;">ปานกลาง</span>
+          <span style="background:#22c55e; padding:2px 8px; border-radius:4px; color:#fff;">มาก</span>
+          <span style="background:#15803d; padding:2px 8px; border-radius:4px; color:#fff; font-weight:bold;">Peak สูงสุด</span>
+        </div>
+      </div>
+
+      <table class="calendar-table" id="calendarTable">
+        <thead id="matrixHead">
+          <tr>
+            <th class="col-tambon">ตำบล</th>
+            <th class="col-crop">สินค้าเกษตร</th>
+            <th style="min-width:70px;">หมวด</th>
+            <th class="col-total" id="th-total-col">รวมปี (ตัน)</th>
+            <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+            <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+            <th style="min-width:90px;">ช่วงเก็บเกี่ยว</th>
+          </tr>
+        </thead>
+        <tbody id="matrixTableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Committee Review Points Section -->
+    <section class="committee-box">
+      <h3><i class="fa-solid fa-clipboard-check"></i> ข้อแนะนำและประเด็นสำคัญสำหรับคณะทำงานกลั่นกรอง</h3>
+      <p style="font-size:14px; margin-bottom:12px; color:#1f2937;">
+        ขอความอนุเคราะห์คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพุทธมณฑล พิจารณาและให้ข้อคิดเห็นในประเด็นดังต่อไปนี้:
+      </p>
+      <ol class="committee-list">
+        <li><strong>การคาดการณ์ปี 2570:</strong> ปัจจุบันกำหนดค่าตั้งต้นไว้เท่ากับปี 2569 (รวม 18,114.07 ตัน) ตามแนวทางของ สศก. ขอให้คณะทำงานฯ ยืนยันว่าปีหน้าคาดว่าจะมีปัจจัยเปลี่ยนแปลงหรือไม่ เช่น สถานการณ์น้ำ พื้นที่ก่อสร้างขยายตัว หรือการลด/เพิ่มรอบทำนา</li>
+        <li><strong>ข้าวนาปีและนาปรัง (17,250 ตัน):</strong> คำนวณจากฐาน 800 กก./ไร่ และกำหนดสัดส่วนเก็บเกี่ยว นาปรัง (ม.ค. 30%, ก.พ. 60%, มี.ค. 10%) และนาปี (ส.ค. 20%, ก.ย. 50%, ต.ค. 30%) ยอดทั้งหมดปัดเป็นหลักสิบตัน ขอให้ตรวจยืนยันความสอดคล้องกับรอบทำนาจริง</li>
+        <li><strong>ผักตัดต่อเนื่อง (กะเพรา 13.15 ตัน, ตะไคร้, ผักชีฝรั่ง):</strong> ฐานตัวเลขได้คำนวณรวมผลผลิตทุกครั้งตัดตลอดทั้งปีแล้ว ไม่นำจำนวนครั้งตัดมาคูณซ้ำ</li>
+        <li><strong>การตัดผลไม้นอกฤดู:</strong> มะม่วง (มี.ค.–มิ.ย.) และลำไย (มิ.ย.–ก.ย.) ได้ปรับแก้ไขตัดผลผลิตเดือนนอกฤดูออกเป็นศูนย์ตามสภาพสวนจริงในพื้นที่แล้ว</li>
+        <li><strong>การกระจายผลผลิต:</strong> ข้าวตั้งเป้าขายนอกจังหวัด 80% / ในจังหวัด 20% พืชอื่นตั้ง 50/50 ขอให้ผู้แทนเกษตรกร/โรงสี/ผู้รับซื้อช่วยยืนยันความเหมาะสม</li>
+      </ol>
+    </section>
+
+    <!-- Crop Cards Grid View -->
+    <div class="section-title-wrap">
+      <div>
+        <h3 class="section-title"><i class="fa-solid fa-grip"></i> การ์ดข้อมูลรายสินค้า 44 รายการ</h3>
+        <p class="section-sub">แสดงสัดส่วนผลผลิต พื้นที่เพาะปลูก และครัวเรือนรายแปลง</p>
+      </div>
+      <div id="item-count-text" style="font-size:13px; color:var(--text-muted);">
+        แสดง 44 รายการ
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+      <!-- Populated by JS -->
+    </div>
+
+  </main>
+
+  <!-- Modal for Crop Details -->
+  <div class="modal-backdrop" id="cropModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalContent">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-weight:600; color:var(--primary-dark); margin-bottom:4px;">สำนักงานเกษตรอำเภอพุทธมณฑล จังหวัดนครปฐม</p>
+      <p>จัดทำข้อมูลเพื่อประกอบการพิจารณากลั่นกรองปฏิทินผลผลิตสินค้าเกษตร สศก. (ระบบ PCC รอบปี 2569 และคาดการณ์ 2570)</p>
+      <p style="font-size:11px; margin-top:8px; color:var(--text-light);">
+        URL: https://dragonfly13110.github.io/doae-farmer-data/calendar-phutthamonthon/
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const CROP_DATA = [{"id":1,"tambon":"คลองโยง","crop":"กล้วยน้ำว้า","category":"ไม้ผล/ไม้ยืนต้น","households":44,"plantArea":47.6,"harvestArea":47.6,"round":1,"currentTotal":42.8,"inside":21.4,"outside":21.4,"nextTotal":42.8,"monthly2569":[4.708,4.28,4.28,3.852,3.424,2.996,2.568,2.14,2.568,3.424,4.28,4.28],"monthly2570":[4.708,4.28,4.28,3.852,3.424,2.996,2.568,2.14,2.568,3.424,4.28,4.28],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":2,"tambon":"คลองโยง","crop":"กล้วยหอมทอง","category":"ไม้ผล/ไม้ยืนต้น","households":3,"plantArea":5.25,"harvestArea":5.25,"round":1,"currentTotal":4.5,"inside":2.25,"outside":2.25,"nextTotal":4.5,"monthly2569":[0.45,0.45,0.405,0.36,0.315,0.27,0.27,0.315,0.36,0.405,0.45,0.45],"monthly2570":[0.45,0.45,0.405,0.36,0.315,0.27,0.27,0.315,0.36,0.405,0.45,0.45],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":3,"tambon":"คลองโยง","crop":"กะเพรา","category":"พืชผัก/สมุนไพร","households":11,"plantArea":21,"harvestArea":21,"round":1,"currentTotal":13.15,"inside":6.575,"outside":6.575,"nextTotal":13.15,"monthly2569":[1.1835,1.1835,1.1835,1.052,1.052,1.1835,1.1835,1.052,0.789,0.789,1.1835,1.315],"monthly2570":[1.1835,1.1835,1.1835,1.052,1.052,1.1835,1.1835,1.052,0.789,0.789,1.1835,1.315],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ธ.ค.","peakMonth2570":"ธ.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":4,"tambon":"คลองโยง","crop":"ตะไคร้","category":"พืชผัก/สมุนไพร","households":18,"plantArea":25,"harvestArea":25,"round":1,"currentTotal":24.95,"inside":12.475,"outside":12.475,"nextTotal":24.95,"monthly2569":[1.7465,1.7465,1.7465,1.497,1.7465,1.996,2.2455,2.2455,2.495,2.495,2.495,2.495],"monthly2570":[1.7465,1.7465,1.7465,1.497,1.7465,1.996,2.2455,2.2455,2.495,2.495,2.495,2.495],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ก.ย.","peakMonth2570":"ก.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":5,"tambon":"คลองโยง","crop":"นาปรัง (ข้าวเจ้า)","category":"ข้าว","households":351,"plantArea":5756.66,"harvestArea":5756.66,"round":1,"currentTotal":4610,"inside":920,"outside":3690,"nextTotal":4610,"monthly2569":[1380,2770,460,0,0,0,0,0,0,0,0,0],"monthly2570":[1380,2770,460,0,0,0,0,0,0,0,0,0],"harvestMonths":["ม.ค.","ก.พ.","มี.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค."],"peakMonth":"ก.พ.","peakMonth2570":"ก.พ.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":6,"tambon":"คลองโยง","crop":"นาปี (ข้าวเจ้า)","category":"ข้าว","households":348,"plantArea":5739.66,"harvestArea":5739.66,"round":1,"currentTotal":4590,"inside":920,"outside":3670,"nextTotal":4590,"monthly2569":[0,0,0,0,0,0,0,920,2290,1380,0,0],"monthly2570":[0,0,0,0,0,0,0,920,2290,1380,0,0],"harvestMonths":["ส.ค.","ก.ย.","ต.ค."],"harvestMonths2570":["ส.ค.","ก.ย.","ต.ค."],"peakMonth":"ก.ย.","peakMonth2570":"ก.ย.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":7,"tambon":"คลองโยง","crop":"ผักชีฝรั่ง","category":"พืชผัก/สมุนไพร","households":54,"plantArea":181.5,"harvestArea":181.5,"round":1,"currentTotal":348.65,"inside":174.325,"outside":174.325,"nextTotal":348.65,"monthly2569":[38.3515,34.865,27.892,20.919,24.4055,31.3785,34.865,27.892,20.919,20.919,31.3785,34.865],"monthly2570":[38.3515,34.865,27.892,20.919,24.4055,31.3785,34.865,27.892,20.919,20.919,31.3785,34.865],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":8,"tambon":"คลองโยง","crop":"ผักบุ้งน้ำ","category":"พืชผัก/สมุนไพร","households":4,"plantArea":12.5,"harvestArea":12.5,"round":1,"currentTotal":10.4,"inside":5.2,"outside":5.2,"nextTotal":10.4,"monthly2569":[0.728,0.728,0.832,0.832,1.04,1.04,1.144,1.04,0.728,0.624,0.832,0.832],"monthly2570":[0.728,0.728,0.832,0.832,1.04,1.04,1.144,1.04,0.728,0.624,0.832,0.832],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ก.ค.","peakMonth2570":"ก.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":9,"tambon":"คลองโยง","crop":"ฝรั่ง ฝรั่งกิมจู","category":"ไม้ผล/ไม้ยืนต้น","households":2,"plantArea":3,"harvestArea":3,"round":1,"currentTotal":2.6,"inside":1.3,"outside":1.3,"nextTotal":2.6,"monthly2569":[0.182,0.182,0.156,0.182,0.234,0.312,0.312,0.182,0.13,0.286,0.26,0.182],"monthly2570":[0.182,0.182,0.156,0.182,0.234,0.312,0.312,0.182,0.13,0.286,0.26,0.182],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"มิ.ย.","peakMonth2570":"มิ.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":10,"tambon":"คลองโยง","crop":"มะนาว","category":"ไม้ผล/ไม้ยืนต้น","households":15,"plantArea":31.25,"harvestArea":31.25,"round":1,"currentTotal":37.1,"inside":18.55,"outside":18.55,"nextTotal":37.1,"monthly2569":[1.855,1.484,1.113,1.113,2.226,3.71,5.565,6.678,5.936,3.71,2.226,1.484],"monthly2570":[1.855,1.484,1.113,1.113,2.226,3.71,5.565,6.678,5.936,3.71,2.226,1.484],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":11,"tambon":"คลองโยง","crop":"มะนาว มะนาวแป้น","category":"ไม้ผล/ไม้ยืนต้น","households":16,"plantArea":12.25,"harvestArea":12.25,"round":1,"currentTotal":9.14,"inside":4.57,"outside":4.57,"nextTotal":9.14,"monthly2569":[0.5484,0.6398,0.7312,0.7312,0.6398,0.7312,0.914,1.0968,1.0968,0.8226,0.6398,0.5484],"monthly2570":[0.5484,0.6398,0.7312,0.7312,0.6398,0.7312,0.914,1.0968,1.0968,0.8226,0.6398,0.5484],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":12,"tambon":"คลองโยง","crop":"มะพร้าวแก่","category":"ไม้ผล/ไม้ยืนต้น","households":3,"plantArea":7,"harvestArea":7,"round":1,"currentTotal":4,"inside":2,"outside":2,"nextTotal":4,"monthly2569":[0.2832,0.304,0.3348,0.3796,0.4192,0.4524,0.4268,0.3628,0.2636,0.2528,0.2628,0.258],"monthly2570":[0.2832,0.304,0.3348,0.3796,0.4192,0.4524,0.4268,0.3628,0.2636,0.2528,0.2628,0.258],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"มิ.ย.","peakMonth2570":"มิ.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":13,"tambon":"คลองโยง","crop":"มะพร้าวน้ำหอม","category":"ไม้ผล/ไม้ยืนต้น","households":30,"plantArea":135.25,"harvestArea":135.25,"round":1,"currentTotal":112.75,"inside":56.375,"outside":56.375,"nextTotal":112.75,"monthly2569":[9.02,7.8925,5.6375,4.51,5.6375,7.8925,10.1475,11.275,12.4025,13.53,13.53,11.275],"monthly2570":[9.02,7.8925,5.6375,4.51,5.6375,7.8925,10.1475,11.275,12.4025,13.53,13.53,11.275],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ต.ค.","peakMonth2570":"ต.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":14,"tambon":"คลองโยง","crop":"มะม่วงเขียวเสวย","category":"ไม้ผล/ไม้ยืนต้น","households":15,"plantArea":14.5,"harvestArea":14.5,"round":1,"currentTotal":11.7,"inside":5.85,"outside":5.85,"nextTotal":11.7,"monthly2569":[0,0,2.34,4.329,3.861,1.17,0,0,0,0,0,0],"monthly2570":[0,0,2.34,4.329,3.861,1.17,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":15,"tambon":"คลองโยง","crop":"มะม่วงน้ำดอกไม้","category":"ไม้ผล/ไม้ยืนต้น","households":11,"plantArea":33.25,"harvestArea":33.25,"round":1,"currentTotal":12.3,"inside":6.15,"outside":6.15,"nextTotal":12.3,"monthly2569":[0,0,3.69,4.674,3.075,0.861,0,0,0,0,0,0],"monthly2570":[0,0,3.69,4.674,3.075,0.861,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":16,"tambon":"คลองโยง","crop":"ลำไยพวงทอง","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":1,"harvestArea":1,"round":1,"currentTotal":1,"inside":0.5,"outside":0.5,"nextTotal":1,"monthly2569":[0,0,0,0,0,0.14,0.31,0.38,0.17,0,0,0],"monthly2570":[0,0,0,0,0,0.14,0.31,0.38,0.17,0,0,0],"harvestMonths":["มิ.ย.","ก.ค.","ส.ค.","ก.ย."],"harvestMonths2570":["มิ.ย.","ก.ค.","ส.ค.","ก.ย."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":17,"tambon":"คลองโยง","crop":"ส้มโอขาวน้ำผึ้ง","category":"ไม้ผล/ไม้ยืนต้น","households":3,"plantArea":2.25,"harvestArea":2.25,"round":1,"currentTotal":2.3,"inside":1.15,"outside":1.15,"nextTotal":2.3,"monthly2569":[0.115,0.115,0.138,0.138,0.161,0.184,0.253,0.414,0.414,0.207,0.092,0.069],"monthly2570":[0.115,0.115,0.138,0.138,0.161,0.184,0.253,0.414,0.414,0.207,0.092,0.069],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":18,"tambon":"คลองโยง","crop":"สะระแหน่","category":"พืชผัก/สมุนไพร","households":2,"plantArea":2.5,"harvestArea":2.5,"round":1,"currentTotal":1.5,"inside":0.75,"outside":0.75,"nextTotal":1.5,"monthly2569":[0.18,0.165,0.12,0.075,0.105,0.135,0.135,0.12,0.09,0.09,0.135,0.15],"monthly2570":[0.18,0.165,0.12,0.075,0.105,0.135,0.135,0.12,0.09,0.09,0.135,0.15],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":19,"tambon":"มหาสวัสดิ์","crop":"กล้วยน้ำว้า","category":"ไม้ผล/ไม้ยืนต้น","households":12,"plantArea":15.25,"harvestArea":15.25,"round":1,"currentTotal":16.15,"inside":8.075,"outside":8.075,"nextTotal":16.15,"monthly2569":[1.7765,1.615,1.615,1.4535,1.292,1.1305,0.969,0.8075,0.969,1.292,1.615,1.615],"monthly2570":[1.7765,1.615,1.615,1.4535,1.292,1.1305,0.969,0.8075,0.969,1.292,1.615,1.615],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":20,"tambon":"มหาสวัสดิ์","crop":"กล้วยหอมทอง","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":0.25,"harvestArea":0.25,"round":1,"currentTotal":0.5,"inside":0.25,"outside":0.25,"nextTotal":0.5,"monthly2569":[0.05,0.05,0.045,0.04,0.035,0.03,0.03,0.035,0.04,0.045,0.05,0.05],"monthly2570":[0.05,0.05,0.045,0.04,0.035,0.03,0.03,0.035,0.04,0.045,0.05,0.05],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":21,"tambon":"มหาสวัสดิ์","crop":"นาปรัง (ข้าวเจ้า)","category":"ข้าว","households":187,"plantArea":2904.87,"harvestArea":2904.87,"round":1,"currentTotal":2320,"inside":460,"outside":1860,"nextTotal":2320,"monthly2569":[700,1390,230,0,0,0,0,0,0,0,0,0],"monthly2570":[700,1390,230,0,0,0,0,0,0,0,0,0],"harvestMonths":["ม.ค.","ก.พ.","มี.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค."],"peakMonth":"ก.พ.","peakMonth2570":"ก.พ.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":22,"tambon":"มหาสวัสดิ์","crop":"นาปี (ข้าวเจ้า)","category":"ข้าว","households":185,"plantArea":2817.62,"harvestArea":2817.62,"round":1,"currentTotal":2250,"inside":450,"outside":1800,"nextTotal":2250,"monthly2569":[0,0,0,0,0,0,0,450,1130,670,0,0],"monthly2570":[0,0,0,0,0,0,0,450,1130,670,0,0],"harvestMonths":["ส.ค.","ก.ย.","ต.ค."],"harvestMonths2570":["ส.ค.","ก.ย.","ต.ค."],"peakMonth":"ก.ย.","peakMonth2570":"ก.ย.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":23,"tambon":"มหาสวัสดิ์","crop":"ฝรั่ง ฝรั่งกิมจู","category":"ไม้ผล/ไม้ยืนต้น","households":2,"plantArea":4,"harvestArea":4,"round":1,"currentTotal":4,"inside":2,"outside":2,"nextTotal":4,"monthly2569":[0.28,0.28,0.24,0.28,0.36,0.48,0.48,0.28,0.2,0.44,0.4,0.28],"monthly2570":[0.28,0.28,0.24,0.28,0.36,0.48,0.48,0.28,0.2,0.44,0.4,0.28],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"มิ.ย.","peakMonth2570":"มิ.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":24,"tambon":"มหาสวัสดิ์","crop":"มะนาว มะนาวแป้น","category":"ไม้ผล/ไม้ยืนต้น","households":12,"plantArea":13.5,"harvestArea":13.5,"round":1,"currentTotal":9.38,"inside":4.69,"outside":4.69,"nextTotal":9.38,"monthly2569":[0.5628,0.6566,0.7504,0.7504,0.6566,0.7504,0.938,1.1256,1.1256,0.8442,0.6566,0.5628],"monthly2570":[0.5628,0.6566,0.7504,0.7504,0.6566,0.7504,0.938,1.1256,1.1256,0.8442,0.6566,0.5628],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":25,"tambon":"มหาสวัสดิ์","crop":"มะพร้าวแก่","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":2,"harvestArea":2,"round":1,"currentTotal":4,"inside":2,"outside":2,"nextTotal":4,"monthly2569":[0.2832,0.304,0.3348,0.3796,0.4192,0.4524,0.4268,0.3628,0.2636,0.2528,0.2628,0.258],"monthly2570":[0.2832,0.304,0.3348,0.3796,0.4192,0.4524,0.4268,0.3628,0.2636,0.2528,0.2628,0.258],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"มิ.ย.","peakMonth2570":"มิ.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":26,"tambon":"มหาสวัสดิ์","crop":"มะพร้าวน้ำหอม","category":"ไม้ผล/ไม้ยืนต้น","households":13,"plantArea":32.25,"harvestArea":32.25,"round":1,"currentTotal":30.75,"inside":15.375,"outside":15.375,"nextTotal":30.75,"monthly2569":[2.46,2.1525,1.5375,1.23,1.5375,2.1525,2.7675,3.075,3.3825,3.69,3.69,3.075],"monthly2570":[2.46,2.1525,1.5375,1.23,1.5375,2.1525,2.7675,3.075,3.3825,3.69,3.69,3.075],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ต.ค.","peakMonth2570":"ต.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":27,"tambon":"มหาสวัสดิ์","crop":"มะม่วงเขียวเสวย","category":"ไม้ผล/ไม้ยืนต้น","households":6,"plantArea":10,"harvestArea":10,"round":1,"currentTotal":20.25,"inside":10.125,"outside":10.125,"nextTotal":20.25,"monthly2569":[0,0,4.05,7.4925,6.6825,2.025,0,0,0,0,0,0],"monthly2570":[0,0,4.05,7.4925,6.6825,2.025,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":28,"tambon":"มหาสวัสดิ์","crop":"มะม่วงน้ำดอกไม้","category":"ไม้ผล/ไม้ยืนต้น","households":9,"plantArea":12.75,"harvestArea":12.75,"round":1,"currentTotal":24.6,"inside":12.3,"outside":12.3,"nextTotal":24.6,"monthly2569":[0,0,7.38,9.348,6.15,1.722,0,0,0,0,0,0],"monthly2570":[0,0,7.38,9.348,6.15,1.722,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":29,"tambon":"มหาสวัสดิ์","crop":"มะละกอแขกดำ","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":6,"harvestArea":6,"round":1,"currentTotal":1,"inside":0.5,"outside":0.5,"nextTotal":1,"monthly2569":[0.09,0.09,0.1,0.09,0.08,0.07,0.07,0.06,0.06,0.08,0.1,0.11],"monthly2570":[0.09,0.09,0.1,0.09,0.08,0.07,0.07,0.06,0.06,0.08,0.1,0.11],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ธ.ค.","peakMonth2570":"ธ.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":30,"tambon":"มหาสวัสดิ์","crop":"ลำไยพวงทอง","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":3,"harvestArea":3,"round":1,"currentTotal":3,"inside":1.5,"outside":1.5,"nextTotal":3,"monthly2569":[0,0,0,0,0,0.42,0.93,1.14,0.51,0,0,0],"monthly2570":[0,0,0,0,0,0.42,0.93,1.14,0.51,0,0,0],"harvestMonths":["มิ.ย.","ก.ค.","ส.ค.","ก.ย."],"harvestMonths2570":["มิ.ย.","ก.ค.","ส.ค.","ก.ย."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":31,"tambon":"มหาสวัสดิ์","crop":"ส้มโอขาวน้ำผึ้ง","category":"ไม้ผล/ไม้ยืนต้น","households":3,"plantArea":14.5,"harvestArea":14.5,"round":1,"currentTotal":29.5,"inside":14.75,"outside":14.75,"nextTotal":29.5,"monthly2569":[1.475,1.475,1.77,1.77,2.065,2.36,3.245,5.31,5.31,2.655,1.18,0.885],"monthly2570":[1.475,1.475,1.77,1.77,2.065,2.36,3.245,5.31,5.31,2.655,1.18,0.885],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":32,"tambon":"มหาสวัสดิ์","crop":"ส้มโอทองดี","category":"ไม้ผล/ไม้ยืนต้น","households":1,"plantArea":4,"harvestArea":4,"round":1,"currentTotal":8,"inside":4,"outside":4,"nextTotal":8,"monthly2569":[0.64,0.64,0.4,0.4,0.48,0.56,0.8,1.28,1.28,0.64,0.4,0.48],"monthly2570":[0.64,0.64,0.4,0.4,0.48,0.56,0.8,1.28,1.28,0.64,0.4,0.48],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":33,"tambon":"มหาสวัสดิ์","crop":"ส้มโอนครชัยศรี","category":"ไม้ผล/ไม้ยืนต้น","households":0,"plantArea":0,"harvestArea":0,"round":1,"currentTotal":0,"inside":0,"outside":0,"nextTotal":0,"monthly2569":[0,0,0,0,0,0,0,0,0,0,0,0],"monthly2570":[0,0,0,0,0,0,0,0,0,0,0,0],"harvestMonths":[],"harvestMonths2570":[],"peakMonth":"-","peakMonth2570":"-","sourcePlan":"ตรวจสัดส่วนปฏิทิน_2569_ข้อมูลเดิม.json"},{"id":34,"tambon":"ศาลายา","crop":"กล้วยน้ำว้า","category":"ไม้ผล/ไม้ยืนต้น","households":22,"plantArea":24.47,"harvestArea":24.47,"round":1,"currentTotal":19.5,"inside":9.75,"outside":9.75,"nextTotal":19.5,"monthly2569":[2.145,1.95,1.95,1.755,1.56,1.365,1.17,0.975,1.17,1.56,1.95,1.95],"monthly2570":[2.145,1.95,1.95,1.755,1.56,1.365,1.17,0.975,1.17,1.56,1.95,1.95],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":35,"tambon":"ศาลายา","crop":"กล้วยหอมทอง","category":"ไม้ผล/ไม้ยืนต้น","households":5,"plantArea":8.5,"harvestArea":8.5,"round":1,"currentTotal":6.9,"inside":3.45,"outside":3.45,"nextTotal":6.9,"monthly2569":[0.69,0.69,0.621,0.552,0.483,0.414,0.414,0.483,0.552,0.621,0.69,0.69],"monthly2570":[0.69,0.69,0.621,0.552,0.483,0.414,0.414,0.483,0.552,0.621,0.69,0.69],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ม.ค.","peakMonth2570":"ม.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":36,"tambon":"ศาลายา","crop":"นาปรัง (ข้าวเจ้า)","category":"ข้าว","households":124,"plantArea":2151.35,"harvestArea":2151.35,"round":1,"currentTotal":1720,"inside":340,"outside":1380,"nextTotal":1720,"monthly2569":[520,1030,170,0,0,0,0,0,0,0,0,0],"monthly2570":[520,1030,170,0,0,0,0,0,0,0,0,0],"harvestMonths":["ม.ค.","ก.พ.","มี.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค."],"peakMonth":"ก.พ.","peakMonth2570":"ก.พ.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":37,"tambon":"ศาลายา","crop":"นาปี (ข้าวเจ้า)","category":"ข้าว","households":129,"plantArea":2194.24,"harvestArea":2194.24,"round":1,"currentTotal":1760,"inside":350,"outside":1410,"nextTotal":1760,"monthly2569":[0,0,0,0,0,0,0,350,880,530,0,0],"monthly2570":[0,0,0,0,0,0,0,350,880,530,0,0],"harvestMonths":["ส.ค.","ก.ย.","ต.ค."],"harvestMonths2570":["ส.ค.","ก.ย.","ต.ค."],"peakMonth":"ก.ย.","peakMonth2570":"ก.ย.","sourcePlan":"ข้าวนาปีและนาปรัง_ปัดหลักสิบ_2569.json"},{"id":38,"tambon":"ศาลายา","crop":"มะนาว มะนาวแป้น","category":"ไม้ผล/ไม้ยืนต้น","households":14,"plantArea":10,"harvestArea":10,"round":1,"currentTotal":6.55,"inside":3.275,"outside":3.275,"nextTotal":6.55,"monthly2569":[0.393,0.4585,0.524,0.524,0.4585,0.524,0.655,0.786,0.786,0.5895,0.4585,0.393],"monthly2570":[0.393,0.4585,0.524,0.524,0.4585,0.524,0.655,0.786,0.786,0.5895,0.4585,0.393],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":39,"tambon":"ศาลายา","crop":"มะพร้าวแก่","category":"ไม้ผล/ไม้ยืนต้น","households":2,"plantArea":0.5,"harvestArea":0.5,"round":1,"currentTotal":0.4,"inside":0.2,"outside":0.2,"nextTotal":0.4,"monthly2569":[0.0283,0.0304,0.0335,0.038,0.0419,0.0452,0.0427,0.0363,0.0263,0.0253,0.0263,0.0258],"monthly2570":[0.0283,0.0304,0.0335,0.038,0.0419,0.0452,0.0427,0.0363,0.0263,0.0253,0.0263,0.0258],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"มิ.ย.","peakMonth2570":"มิ.ย.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":40,"tambon":"ศาลายา","crop":"มะพร้าวน้ำหอม","category":"ไม้ผล/ไม้ยืนต้น","households":8,"plantArea":5.015,"harvestArea":5.015,"round":1,"currentTotal":3.45,"inside":1.725,"outside":1.725,"nextTotal":3.45,"monthly2569":[0.276,0.2415,0.1725,0.138,0.1725,0.2415,0.3105,0.345,0.3795,0.414,0.414,0.345],"monthly2570":[0.276,0.2415,0.1725,0.138,0.1725,0.2415,0.3105,0.345,0.3795,0.414,0.414,0.345],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ต.ค.","peakMonth2570":"ต.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":41,"tambon":"ศาลายา","crop":"มะม่วงเขียวเสวย","category":"ไม้ผล/ไม้ยืนต้น","households":7,"plantArea":11.75,"harvestArea":11.75,"round":1,"currentTotal":7.2,"inside":3.6,"outside":3.6,"nextTotal":7.2,"monthly2569":[0,0,1.44,2.664,2.376,0.72,0,0,0,0,0,0],"monthly2570":[0,0,1.44,2.664,2.376,0.72,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":42,"tambon":"ศาลายา","crop":"มะม่วงน้ำดอกไม้","category":"ไม้ผล/ไม้ยืนต้น","households":17,"plantArea":20.385,"harvestArea":20.385,"round":1,"currentTotal":17.2,"inside":8.6,"outside":8.6,"nextTotal":17.2,"monthly2569":[0,0,5.16,6.536,4.3,1.204,0,0,0,0,0,0],"monthly2570":[0,0,5.16,6.536,4.3,1.204,0,0,0,0,0,0],"harvestMonths":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"harvestMonths2570":["มี.ค.","เม.ย.","พ.ค.","มิ.ย."],"peakMonth":"เม.ย.","peakMonth2570":"เม.ย.","sourcePlan":"แก้ผลไม้นอกฤดู_2569_แผน.json"},{"id":43,"tambon":"ศาลายา","crop":"ส้มโอขาวน้ำผึ้ง","category":"ไม้ผล/ไม้ยืนต้น","households":6,"plantArea":19,"harvestArea":19,"round":1,"currentTotal":12.3,"inside":6.15,"outside":6.15,"nextTotal":12.3,"monthly2569":[0.615,0.615,0.738,0.738,0.861,0.984,1.353,2.214,2.214,1.107,0.492,0.369],"monthly2570":[0.615,0.615,0.738,0.738,0.861,0.984,1.353,2.214,2.214,1.107,0.492,0.369],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"},{"id":44,"tambon":"ศาลายา","crop":"ส้มโอทองดี","category":"ไม้ผล/ไม้ยืนต้น","households":2,"plantArea":1.25,"harvestArea":1.25,"round":1,"currentTotal":0.6,"inside":0.3,"outside":0.3,"nextTotal":0.6,"monthly2569":[0.048,0.048,0.03,0.03,0.036,0.042,0.06,0.096,0.096,0.048,0.03,0.036],"monthly2570":[0.048,0.048,0.03,0.03,0.036,0.042,0.06,0.096,0.096,0.048,0.03,0.036],"harvestMonths":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"harvestMonths2570":["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],"peakMonth":"ส.ค.","peakMonth2570":"ส.ค.","sourcePlan":"คาดการณ์ฤดูกาลใหม่_2569_แผนกรอก.json"}];
+    const MONTHS = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+    const MONTHS_FULL = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+
+    let currentView = '2569'; // '2569', '2570', 'compare'
+    let currentTambon = 'all';
+    let currentCategory = 'all';
+    let currentSearch = '';
+    let monthlyChart = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      setupFilters();
+      initChart();
+      renderAll();
+    });
+
+    function setupFilters() {
+      // Year / View filter
+      document.querySelectorAll('#year-toggle .pill-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('#year-toggle .pill-btn').forEach(b => {
+            b.classList.remove('active');
+            b.classList.remove('active-forecast');
+          });
+          
+          currentView = btn.dataset.year;
+          if (currentView === '2570') {
+            btn.classList.add('active-forecast');
+          } else {
+            btn.classList.add('active');
+          }
+          
+          updateViewUI();
+          renderAll();
+        });
+      });
+
+      // Tambon filter
+      document.querySelectorAll('#tambon-filter .pill-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('#tambon-filter .pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTambon = btn.dataset.tambon;
+          renderAll();
+        });
+      });
+
+      // Category filter
+      document.querySelectorAll('#category-filter .pill-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('#category-filter .pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.dataset.category;
+          renderAll();
+        });
+      });
+
+      // Search input
+      document.getElementById('search-input').addEventListener('input', (e) => {
+        currentSearch = e.target.value.trim().toLowerCase();
+        renderAll();
+      });
+    }
+
+    function updateViewUI() {
+      const titleTotal = document.getElementById('kpi-title-total');
+      const banner = document.getElementById('forecastBanner');
+      
+      if (currentView === '2570') {
+        titleTotal.innerHTML = '🔮 คาดการณ์ผลผลิตรวม (2570)';
+        banner.style.display = 'flex';
+        banner.style.background = '#f0fdf4';
+        banner.style.borderColor = '#86efac';
+        banner.querySelector('.forecast-banner-icon').style.color = '#16a34a';
+        banner.querySelector('.forecast-banner-title').innerHTML = '✅ มุมมองคาดการณ์ปี 2570: กำหนดฐานไว้เท่ากับปี 2569 เพื่อเสนอที่ประชุมพิจารณา';
+      } else if (currentView === 'compare') {
+        titleTotal.innerHTML = '⚖️ เปรียบเทียบผลผลิต 2569 vs 2570';
+        banner.style.display = 'flex';
+        banner.style.background = '#fffbeb';
+        banner.style.borderColor = '#fde68a';
+        banner.querySelector('.forecast-banner-icon').style.color = '#d97706';
+        banner.querySelector('.forecast-banner-title').innerHTML = '⚖️ มุมมองเปรียบเทียบ: ทั้งปี 2569 และ คาดการณ์ 2570 รวม 18,114.07 ตัน (คงยอด)';
+      } else {
+        titleTotal.innerHTML = 'ผลผลิตรวมทั้งปี (2569)';
+        banner.style.display = 'flex';
+        banner.style.background = '#eff6ff';
+        banner.style.borderColor = '#bfdbfe';
+        banner.querySelector('.forecast-banner-icon').style.color = '#2563eb';
+        banner.querySelector('.forecast-banner-title').innerHTML = '📌 ข้อมูลการคาดการณ์ปี 2570 (Forecast): ตั้งต้นที่ 18,114.07 ตัน ตามหลักการ สศก.';
+      }
+    }
+
+    function getFilteredItems() {
+      return CROP_DATA.filter(item => {
+        if (currentTambon !== 'all' && item.tambon !== currentTambon) return false;
+        if (currentCategory !== 'all' && item.category !== currentCategory) return false;
+        if (currentSearch) {
+          const matchCrop = item.crop.toLowerCase().includes(currentSearch);
+          const matchTambon = item.tambon.toLowerCase().includes(currentSearch);
+          if (!matchCrop && !matchTambon) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderAll() {
+      const items = getFilteredItems();
+      renderKPIs(items);
+      renderMatrix(items);
+      renderCards(items);
+      updateChart(items);
+      document.getElementById('item-count-text').innerText = `แสดง ${items.length} รายการ (จากทั้งหมด ${CROP_DATA.length} รายการ)`;
+    }
+
+    function renderKPIs(items) {
+      let totalYield69 = 0;
+      let totalYield70 = 0;
+      let riceYield = 0;
+      let otherYield = 0;
+
+      items.forEach(it => {
+        totalYield69 += it.currentTotal;
+        totalYield70 += it.nextTotal;
+        if (it.category === 'ข้าว') {
+          riceYield += (currentView === '2570' ? it.nextTotal : it.currentTotal);
+        } else {
+          otherYield += (currentView === '2570' ? it.nextTotal : it.currentTotal);
+        }
+      });
+
+      const displayYield = currentView === '2570' ? totalYield70 : totalYield69;
+      document.getElementById('kpi-total-yield').innerHTML = `${displayYield.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span>`;
+      document.getElementById('kpi-sub-total').innerHTML = `<i class="fa-solid fa-arrow-right-arrow-left" style="color:#0284c7;"></i> ปี 69: ${totalYield69.toLocaleString('th-TH', {maximumFractionDigits:0})} ตัน | ปี 70: ${totalYield70.toLocaleString('th-TH', {maximumFractionDigits:0})} ตัน`;
+      
+      document.getElementById('kpi-rice-yield').innerHTML = `${riceYield.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span>`;
+      document.getElementById('kpi-other-yield').innerHTML = `${otherYield.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span style="font-size:14px; font-weight:normal; color:#64748b;">ตัน</span>`;
+    }
+
+    function renderMatrix(items) {
+      const tbody = document.getElementById('matrixTableBody');
+      const thead = document.getElementById('matrixHead');
+
+      if (currentView === 'compare') {
+        thead.innerHTML = `<tr>
+          <th class="col-tambon">ตำบล</th>
+          <th class="col-crop">สินค้าเกษตร</th>
+          <th style="min-width:65px;">หมวด</th>
+          <th style="min-width:90px; background:#e0f2fe; color:#0369a1;">ปี 2569 (ตัน)</th>
+          <th style="min-width:90px; background:#dcfce7; color:#166534;">ปี 2570 (ตัน)</th>
+          <th style="min-width:75px;">ผลต่าง</th>
+          <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+          <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+        </tr>`;
+      } else {
+        const yearLabel = currentView === '2570' ? 'ปี 2570 (คาดการณ์)' : 'ปี 2569';
+        thead.innerHTML = `<tr>
+          <th class="col-tambon">ตำบล</th>
+          <th class="col-crop">สินค้าเกษตร</th>
+          <th style="min-width:70px;">หมวด</th>
+          <th class="col-total">${yearLabel} (ตัน)</th>
+          <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+          <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+          <th style="min-width:90px;">ช่วงเก็บเกี่ยว</th>
+        </tr>`;
+      }
+
+      if (items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="17" style="padding:30px; text-align:center; color:#94a3b8;">ไม่พบข้อมูลสินค้าเกษตรตามเงื่อนไขที่เลือก</td></tr>';
+        return;
+      }
+
+      let html = '';
+      items.forEach(item => {
+        const monthly = currentView === '2570' ? item.monthly2570 : item.monthly2569;
+        const total = currentView === '2570' ? item.nextTotal : item.currentTotal;
+        const maxVal = Math.max(...monthly);
+
+        let catBadge = '';
+        if (item.category === 'ข้าว') catBadge = '<span class="badge badge-rice">ข้าว</span>';
+        else if (item.category === 'ไม้ผล/ไม้ยืนต้น') catBadge = '<span class="badge badge-fruit">ไม้ผล</span>';
+        else catBadge = '<span class="badge badge-veg">ผัก</span>';
+
+        const monthCells = monthly.map(val => {
+          if (val === 0) return '<td class="heat-0">-</td>';
+          
+          let intensityClass = 'heat-1';
+          const ratio = maxVal > 0 ? (val / maxVal) : 0;
+          if (val === maxVal && maxVal > 0) intensityClass = 'heat-peak';
+          else if (ratio >= 0.7) intensityClass = 'heat-4';
+          else if (ratio >= 0.4) intensityClass = 'heat-3';
+          else if (ratio >= 0.2) intensityClass = 'heat-2';
+
+          return `<td class="${intensityClass}" title="${val} ตัน">${val >= 10 ? Math.round(val) : val.toFixed(1)}</td>`;
+        }).join('');
+
+        if (currentView === 'compare') {
+          const diff = item.nextTotal - item.currentTotal;
+          const diffStr = diff === 0 ? '<span style="color:#64748b;">คงที่</span>' : (diff > 0 ? `+${diff}` : diff);
+
+          html += `<tr>
+            <td><span class="badge badge-tambon">${item.tambon}</span></td>
+            <td class="cell-crop" onclick="openModal(${item.id})"><strong>${item.crop}</strong></td>
+            <td>${catBadge}</td>
+            <td style="font-weight:600; text-align:right; background:#f0f9ff;">${item.currentTotal.toLocaleString('th-TH', {minimumFractionDigits: item.currentTotal % 1 === 0 ? 0 : 2})}</td>
+            <td style="font-weight:700; text-align:right; background:#f0fdf4; color:#166534;">${item.nextTotal.toLocaleString('th-TH', {minimumFractionDigits: item.nextTotal % 1 === 0 ? 0 : 2})}</td>
+            <td style="font-size:12px; text-align:center;">${diffStr}</td>
+            ${monthCells}
+          </tr>`;
+        } else {
+          const harvestSummary = (currentView === '2570' ? item.harvestMonths2570 : item.harvestMonths).join(', ') || 'ไม่มีผลผลิต';
+
+          html += `<tr>
+            <td><span class="badge badge-tambon">${item.tambon}</span></td>
+            <td class="cell-crop" onclick="openModal(${item.id})"><strong>${item.crop}</strong></td>
+            <td>${catBadge}</td>
+            <td style="font-weight:700; text-align:right; padding-right:10px;">${total.toLocaleString('th-TH', {minimumFractionDigits: total % 1 === 0 ? 0 : 2})}</td>
+            ${monthCells}
+            <td style="font-size:11px; color:#475569; text-align:left; padding-left:8px;">${harvestSummary}</td>
+          </tr>`;
+        }
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    function renderCards(items) {
+      const grid = document.getElementById('cardsGrid');
+      if (items.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:#94a3b8;">ไม่พบรายการสินค้า</div>';
+        return;
+      }
+
+      let html = '';
+      items.forEach(item => {
+        const total = currentView === '2570' ? item.nextTotal : item.currentTotal;
+        const monthly = currentView === '2570' ? item.monthly2570 : item.monthly2569;
+        const peak = currentView === '2570' ? item.peakMonth2570 : item.peakMonth;
+        const hMonths = currentView === '2570' ? item.harvestMonths2570 : item.harvestMonths;
+        const maxM = Math.max(...monthly);
+
+        let catBadge = '';
+        if (item.category === 'ข้าว') catBadge = '<span class="badge badge-rice">ข้าว</span>';
+        else if (item.category === 'ไม้ผล/ไม้ยืนต้น') catBadge = '<span class="badge badge-fruit">ไม้ผล</span>';
+        else catBadge = '<span class="badge badge-veg">พืชผัก/สมุนไพร</span>';
+
+        const dotBars = monthly.map(m => {
+          let cls = 'timeline-dot';
+          if (m > 0 && m === maxM) cls += ' peak';
+          else if (m > 0) cls += ' active';
+          return `<div class="${cls}" title="${m} ตัน"></div>`;
+        }).join('');
+
+        const yearText = currentView === '2570' ? 'คาดการณ์ปี 2570' : 'ปี 2569';
+
+        html += `<div class="crop-card" onclick="openModal(${item.id})">
+          <div>
+            <div class="card-top">
+              <span class="card-title">${item.crop}</span>
+              <span class="badge badge-tambon">${item.tambon}</span>
+            </div>
+            <div class="card-tags">
+              ${catBadge}
+              <span style="font-size:11px; color:#64748b;">${item.households} ครัวเรือน</span>
+              <span style="font-size:11px; color:#64748b;">• ${item.harvestArea.toLocaleString()} ไร่</span>
+            </div>
+            <div class="card-yield-box">
+              <div>
+                <div style="font-size:11px; color:#64748b;">ผลผลิต (${yearText})</div>
+                <div class="yield-number">${total.toLocaleString('th-TH', {minimumFractionDigits: total % 1 === 0 ? 0 : 2})} <span class="yield-unit">ตัน</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:11px; color:#64748b;">ช่วง Peak สูงสุด</div>
+                <div style="font-weight:600; color:var(--primary); font-size:14px;">${peak !== '-' ? peak : 'ตลอดปี'}</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="harvest-timeline-bar">
+            <div class="timeline-labels">
+              <span>ม.ค.</span>
+              <span style="font-weight:500; color:var(--primary-dark);">เก็บเกี่ยว: ${hMonths.join(', ') || 'ไม่มี'}</span>
+              <span>ธ.ค.</span>
+            </div>
+            <div class="timeline-months-grid">
+              ${dotBars}
+            </div>
+          </div>
+        </div>`;
+      });
+
+      grid.innerHTML = html;
+    }
+
+    function initChart() {
+      const ctx = document.getElementById('monthlyChart').getContext('2d');
+      monthlyChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: MONTHS,
+          datasets: [
+            {
+              label: 'ข้าว (นาปี/นาปรัง)',
+              data: [0,0,0,0,0,0,0,0,0,0,0,0],
+              backgroundColor: '#059669',
+              borderRadius: 6
+            },
+            {
+              label: 'ไม้ผลไม้ยืนต้น',
+              data: [0,0,0,0,0,0,0,0,0,0,0,0],
+              backgroundColor: '#f59e0b',
+              borderRadius: 6
+            },
+            {
+              label: 'พืชผักและสมุนไพร',
+              data: [0,0,0,0,0,0,0,0,0,0,0,0],
+              backgroundColor: '#0284c7',
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: { font: { family: 'Prompt', size: 12 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y.toLocaleString('th-TH', {maximumFractionDigits:2}) + ' ตัน';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { font: { family: 'Prompt', size: 12 } }
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              ticks: {
+                callback: function(val) { return val.toLocaleString() + ' ตัน'; },
+                font: { family: 'Inter', size: 11 }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChart(items) {
+      if (!monthlyChart) return;
+
+      const riceMonthly = new Array(12).fill(0);
+      const fruitMonthly = new Array(12).fill(0);
+      const vegMonthly = new Array(12).fill(0);
+
+      items.forEach(item => {
+        const arr = currentView === '2570' ? item.monthly2570 : item.monthly2569;
+        for (let i = 0; i < 12; i++) {
+          if (item.category === 'ข้าว') riceMonthly[i] += arr[i];
+          else if (item.category === 'ไม้ผล/ไม้ยืนต้น') fruitMonthly[i] += arr[i];
+          else vegMonthly[i] += arr[i];
+        }
+      });
+
+      monthlyChart.data.datasets[0].data = riceMonthly;
+      monthlyChart.data.datasets[1].data = fruitMonthly;
+      monthlyChart.data.datasets[2].data = vegMonthly;
+      monthlyChart.update();
+
+      // Find peak month
+      let peakIdx = 0;
+      let peakTotal = 0;
+      for (let i = 0; i < 12; i++) {
+        const sum = riceMonthly[i] + fruitMonthly[i] + vegMonthly[i];
+        if (sum > peakTotal) {
+          peakTotal = sum;
+          peakIdx = i;
+        }
+      }
+
+      const badge = document.getElementById('chart-summary-badge');
+      const yearLabel = currentView === '2570' ? 'คาดการณ์ปี 2570' : 'ปี 2569';
+      if (peakTotal > 0) {
+        badge.innerText = `${yearLabel} สูงสุด: เดือน${MONTHS_FULL[peakIdx]} (${peakTotal.toLocaleString('th-TH', {maximumFractionDigits:1})} ตัน)`;
+      } else {
+        badge.innerText = 'ไม่พบผลผลิตในช่วงที่เลือก';
+      }
+    }
+
+    function openModal(id) {
+      const item = CROP_DATA.find(x => x.id === id);
+      if (!item) return;
+
+      let monthRows = '';
+      for (let i = 0; i < 12; i++) {
+        const v69 = item.monthly2569[i];
+        const v70 = item.monthly2570[i];
+        monthRows += `<tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 6px 10px; font-weight:500;">${MONTHS_FULL[i]}</td>
+          <td style="padding: 6px 10px; text-align:right; font-weight:600; color:${v69 > 0 ? '#059669' : '#94a3b8'};">${v69.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ตัน</td>
+          <td style="padding: 6px 10px; text-align:right; font-weight:600; color:${v70 > 0 ? '#0284c7' : '#94a3b8'};">${v70.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ตัน</td>
+        </tr>`;
+      }
+
+      const content = `
+        <div style="margin-bottom: 16px;">
+          <span class="badge badge-tambon" style="font-size:12px;">ตำบล${item.tambon}</span>
+          <h2 style="font-size:22px; color:var(--primary-dark); margin:6px 0 2px;">${item.crop}</h2>
+          <p style="font-size:13px; color:#64748b;">หมวด: ${item.category} • รอบที่กรอก: ${item.round} รอบ</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:16px;">
+          <div style="background:#f8faf8; padding:10px; border-radius:8px; border:1px solid #eef3ee;">
+            <div style="font-size:11px; color:#64748b;">พื้นที่ปลูก / ให้ผล</div>
+            <div style="font-size:15px; font-weight:700; color:#1e293b;">${item.plantArea.toLocaleString()} / ${item.harvestArea.toLocaleString()} ไร่</div>
+            <div style="font-size:11px; color:#64748b;">${item.households} ครัวเรือน</div>
+          </div>
+          <div style="background:#f0fdf4; padding:10px; border-radius:8px; border:1px solid #bbf7d0;">
+            <div style="font-size:11px; color:#166534;">ผลผลิตปี 2569</div>
+            <div style="font-size:16px; font-weight:700; color:#166534;">${item.currentTotal.toLocaleString('th-TH', {minimumFractionDigits: 2})} ตัน</div>
+            <div style="font-size:11px; color:#166534;">เฉลี่ย: ${item.harvestArea > 0 ? (item.currentTotal * 1000 / item.harvestArea).toFixed(0) : 0} กก./ไร่</div>
+          </div>
+          <div style="background:#eff6ff; padding:10px; border-radius:8px; border:1px solid #bfdbfe;">
+            <div style="font-size:11px; color:#1e40af;">คาดการณ์ปี 2570</div>
+            <div style="font-size:16px; font-weight:700; color:#1e40af;">${item.nextTotal.toLocaleString('th-TH', {minimumFractionDigits: 2})} ตัน</div>
+            <div style="font-size:11px; color:#1e40af;">สถานะ: คงยอดเดิม</div>
+          </div>
+        </div>
+
+        <div style="background:#fefce8; border:1px solid #fef08a; padding:10px 12px; border-radius:8px; margin-bottom:16px; font-size:12px; color:#854d0e;">
+          <strong>การกระจายผลผลิต:</strong> ในจังหวัด ${item.inside.toLocaleString()} ตัน | นอกจังหวัด ${item.outside.toLocaleString()} ตัน
+        </div>
+
+        <h4 style="font-size:14px; font-weight:600; color:#1e293b; margin-bottom:8px;">เปรียบเทียบปฏิทินรายเดือน (ปี 2569 vs คาดการณ์ 2570)</h4>
+        <div style="max-height:220px; overflow-y:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:16px;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                <th style="padding:6px 10px; text-align:left;">เดือน</th>
+                <th style="padding:6px 10px; text-align:right; color:#059669;">ผลผลิต 2569</th>
+                <th style="padding:6px 10px; text-align:right; color:#0284c7;">คาดการณ์ 2570</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${monthRows}
+            </tbody>
+          </table>
+        </div>
+
+        <div style="font-size:12px; color:#64748b; background:#f1f5f9; padding:10px; border-radius:6px;">
+          <strong>แผนต้นทาง:</strong> ${item.sourcePlan || 'ระบบ PCC สศก.'}
+        </div>
+      `;
+
+      document.getElementById('modalContent').innerHTML = content;
+      document.getElementById('cropModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('cropModal').classList.remove('open');
+    }
+
+    function closeModalOnBackdrop(e) {
+      if (e.target.id === 'cropModal') closeModal();
+    }
+  </script>
+</body>
+</html>
