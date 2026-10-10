@@ -8,18 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @page { size: A4; margin: 18mm 16mm; }
+    @page { size: A4 landscape; margin: 12mm 12mm; }
     * { box-sizing: border-box; }
     body {
       font-family: 'Sarabun', 'TH Sarabun New', sans-serif;
       margin: 0;
       color: #1e293b;
       background: #f1f5f9;
-      font-size: 15px;
+      font-size: 14.5px;
       line-height: 1.6;
     }
     .tools {
-      max-width: 900px;
+      max-width: 1050px;
       margin: 16px auto;
       display: flex;
       justify-content: flex-end;
@@ -29,31 +29,37 @@
       background: #155e38;
       color: white;
       border: 0;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 6px;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       font-family: inherit;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .web-btn {
       background: #0284c7;
       color: white;
       border: 0;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 6px;
-      font-size: 15px;
+      font-size: 14px;
       text-decoration: none;
       font-family: inherit;
       font-weight: 600;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .doc-page {
-      max-width: 900px;
+      max-width: 1050px;
       margin: 0 auto 30px;
       background: white;
       padding: 38px 48px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border-radius: 4px;
     }
     .doc-page.break { page-break-before: always; }
     
@@ -90,34 +96,35 @@
       background: #f8faf8;
       border: 2px solid #155e38;
       border-radius: 12px;
-      padding: 18px;
+      padding: 16px 20px;
       margin: 18px 0;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
     }
     .qr-img {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 8px;
       border: 1px solid #cbd5e1;
       background: white;
-      padding: 6px;
+      padding: 5px;
     }
     .qr-content h4 {
-      font-size: 17px;
+      font-size: 16.5px;
       color: #155e38;
       margin: 0 0 6px;
       font-weight: 700;
     }
     .qr-content p {
       margin: 0 0 8px;
-      font-size: 14px;
+      font-size: 13.5px;
       color: #334155;
+      line-height: 1.5;
     }
     .qr-url {
       font-family: monospace;
-      font-size: 13px;
+      font-size: 12.5px;
       background: #e2e8f0;
       padding: 4px 8px;
       border-radius: 4px;
@@ -126,67 +133,204 @@
       word-break: break-all;
     }
 
+    .view-controls {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 16px 0 20px;
+    }
+    .view-controls-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .view-controls-title {
+      font-weight: 700;
+      color: #155e38;
+      font-size: 14.5px;
+    }
+    .view-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: white;
+      border: 1px solid #94a3b8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      color: #334155;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover {
+      background: #f1f5f9;
+      border-color: #64748b;
+    }
+    .tab-btn.active {
+      background: #155e38;
+      color: white;
+      border-color: #155e38;
+      box-shadow: 0 2px 4px rgba(21, 94, 56, 0.2);
+    }
+
+    .tambon-header {
+      margin-top: 24px;
+      color: #165b37;
+      border-bottom: 2px solid #bbf7d0;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 17px;
+    }
+    .sub-caption {
+      font-size: 12px;
+      font-weight: normal;
+      color: #64748b;
+    }
+
     .report-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11.5px;
-      margin: 12px 0 20px;
+      font-size: 11px;
+      margin: 10px 0 24px;
+      line-height: 1.35;
     }
     .report-table th, .report-table td {
       border: 1px solid #cbd5e1;
-      padding: 5px 5px;
+      padding: 4px 4px;
+      vertical-align: middle;
     }
     .report-table th {
       background: #f1f5f9;
       font-weight: 600;
       text-align: center;
+      color: #1e293b;
+    }
+    .badge-year {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-69 {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+    .badge-70 {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+    }
+    .total-69 {
+      font-weight: 700;
+      color: #166534;
+      background: #f0fdf4;
+    }
+    .total-70 {
+      font-weight: 700;
+      color: #1e40af;
+      background: #eff6ff;
+    }
+    .col-m {
+      text-align: center;
+      font-size: 10.5px;
+    }
+    .m-zero {
+      color: #94a3b8;
+    }
+    .m-69 {
+      font-weight: 600;
+      color: #166534;
+      background: #f0fdf4;
+    }
+    .m-70 {
+      font-weight: 600;
+      color: #1e40af;
+      background: #eff6ff;
+    }
+    .diff-badge {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .diff-badge.pos {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .diff-badge.neg {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .diff-badge.neutral {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+    .reason-note {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.35;
     }
 
     .ballot-box {
       border: 2px dashed #94a3b8;
       background: #fafafa;
-      padding: 18px;
+      padding: 16px 20px;
       border-radius: 8px;
-      margin-top: 20px;
+      margin-top: 18px;
     }
     .ballot-title {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-align: center;
       color: #1e293b;
     }
     .ballot-options {
-      margin-bottom: 14px;
-      font-size: 15px;
-      line-height: 1.8;
+      margin-bottom: 12px;
+      font-size: 14.5px;
+      line-height: 1.7;
     }
     .signature-area {
       display: flex;
       justify-content: flex-end;
-      margin-top: 16px;
+      margin-top: 14px;
     }
     .signature-block {
-      width: 300px;
+      width: 320px;
       text-align: center;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     @media print {
-      body { background: white; font-size: 13px; }
-      .tools { display: none; }
-      .doc-page { max-width: none; margin: 0; padding: 0; box-shadow: none; }
-      .report-table { font-size: 10px; }
-      .report-table th, .report-table td { padding: 3px 3px; }
-      .qr-hero-card { border: 1px solid #000; padding: 12px; }
-      .qr-img { width: 110px; height: 110px; }
+      body { background: white; font-size: 11px; }
+      .tools, .view-controls { display: none !important; }
+      .doc-page { max-width: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
+      .report-table { font-size: 9px; page-break-inside: auto; }
+      .report-table tr { page-break-inside: avoid; }
+      .report-table th, .report-table td { padding: 2.5px 3px; }
+      .reason-note { font-size: 8.5px; }
+      .badge-year, .diff-badge { font-size: 8.5px; padding: 1px 3px; }
+      .qr-hero-card { border: 1px solid #000; padding: 10px; }
+      .qr-img { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
 
   <div class="tools">
-    <a href="https://dragonfly13110.github.io/calendar-phutthamonthon/" target="_blank" class="web-btn">🌐 เปิดเว็บไซต์ปฏิทินผลผลิต</a>
+    <a href="https://dragonfly13110.github.io/calendar-phutthamonthon/" target="_blank" class="web-btn">🌐 เปิดเว็บไซต์ปฏิทินผลผลิต (มือถือ/PC)</a>
     <button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
   </div>
 
@@ -275,430 +419,1328 @@
 
   <!-- Page 2: Table Breakdown -->
   <div class="doc-page break">
-    <h2 style="font-size:19px; color:#155e38; margin:0 0 8px; text-align:center;">
+    <h2 style="font-size:19px; color:#155e38; margin:0 0 6px; text-align:center;">
       เอกสารแนบ: ตารางปฏิทินช่วงเก็บเกี่ยวและปริมาณผลผลิตรายเดือน ปี ๒๕๖๙ และคาดการณ์ปี ๒๕๗๐ (๔๔ รายการ)
     </h2>
-    <p style="text-align:center; font-size:13px; color:#64748b; margin-bottom:14px;">
-      อำเภอพุทธมณฑล จังหวัดนครปฐม • สรุปยอดผลผลิตแยกรายตำบล หน่วย: ตัน
+    <p style="text-align:center; font-size:13px; color:#64748b; margin-bottom:12px;">
+      อำเภอพุทธมณฑล จังหวัดนครปฐม • ข้อมูลรายสินค้า ๓ ตำบล เปรียบเทียบปี ๒๕๖๙ vs คาดการณ์ ๒๕๗๐ (PCC สศก.)
     </p>
 
+    <!-- Interactive View Controls -->
+    <div class="view-controls">
+      <div class="view-controls-header">
+        <div class="view-controls-title">📌 รูปแบบการแสดงผลตารางปฏิทิน (คลิกสลับมุมมองได้):</div>
+        <div style="font-size:12px; color:#64748b;">(โหมดเริ่มต้น: แสดงเปรียบเทียบทั้ง ๒ ปีพร้อมกัน เหมาะสำหรับตรวจทานและพิมพ์รายงาน)</div>
+      </div>
+      <div class="view-tabs">
+        <button class="tab-btn active" id="tab-compare" onclick="switchTableView('compare')">📊 เปรียบเทียบ ๒ ปี (แถวคู่ ๒๕๖๙ vs ๒๕๗๐ พร้อมผลต่าง)</button>
+        <button class="tab-btn" id="tab-2569" onclick="switchTableView('2569')">🌱 ปฏิทินรอบปี ๒๕๖๙ (ผลผลิตและรายเดือน ๒๕๖๙)</button>
+        <button class="tab-btn" id="tab-2570" onclick="switchTableView('2570')">📈 ปฏิทินคาดการณ์ปี ๒๕๗๐ (ผลผลิตและรายเดือน ๒๕๗๐ ตามระบบ PCC)</button>
+      </div>
+    </div>
+
     
-    <h3 style="margin-top:20px; color:#165b37; border-bottom:1px solid #bbf7d0; padding-bottom:4px;">ตำบลคลองโยง (18 รายการ)</h3>
-    <table class="report-table">
-      <thead>
-        <tr>
-          <th rowspan="2" style="width:30px;">ที่</th>
-          <th rowspan="2" style="min-width:120px;">สินค้าเกษตร</th>
-          <th rowspan="2" style="width:45px;">ครัวเรือน</th>
-          <th rowspan="2" style="width:60px;">พื้นที่ให้ผล (ไร่)</th>
-          <th rowspan="2" style="width:70px; background:#e8f5ed; color:#14532d;">ผลผลิต 2569 (ตัน)</th>
-          <th rowspan="2" style="width:70px; background:#dbeafe; color:#1e40af;">คาดการณ์ 2570 (ตัน)</th>
-          <th colspan="12">ปฏิทินผลผลิตรายเดือน (ตัน) *ทั้ง 2 ปีใช้กรอบรายเดือนเดียวกัน</th>
+    <div class="tambon-section" id="section-คลองโยง">
+      <h3 class="tambon-header">
+        <span>ตำบลคลองโยง (18 รายการสินค้า)</span>
+        <span class="sub-caption">หน่วยผลผลิต: ตัน (สถิติเกษตรกร: ครัวเรือน / ไร่)</span>
+      </h3>
+      <table class="report-table" id="table-คลองโยง">
+        <thead>
+          <tr class="head-row-main">
+            <th rowspan="2" style="width:28px;">ที่</th>
+            <th rowspan="2" style="min-width:115px;">สินค้าเกษตร</th>
+            <th rowspan="2" style="width:42px;">ครัวเรือน</th>
+            <th rowspan="2" style="width:55px;">พื้นที่ให้ผล (ไร่)</th>
+            <th rowspan="2" style="width:85px;">รอบปีข้อมูล</th>
+            <th rowspan="2" style="width:75px;">ผลผลิตรวม (ตัน)</th>
+            <th colspan="12" class="th-months">ปฏิทินผลผลิตรายเดือน (ตัน) ปี ๒๕๖๙ และคาดการณ์ ๒๕๗๐</th>
+            <th rowspan="2" style="min-width:150px;">ผลต่างปี ๗๐ / ปัจจัยสภาพภูมิอากาศ</th>
+          </tr>
+          <tr class="head-row-sub">
+            <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+            <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr class="row-pair row-year-69" data-crop-id="1">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">1</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยน้ำว้า</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">44</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">47.60</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">42.80</td>
+          <td class="col-m m-69">4.7</td><td class="col-m m-69">4.3</td><td class="col-m m-69">4.3</td><td class="col-m m-69">3.9</td><td class="col-m m-69">3.4</td><td class="col-m m-69">3.0</td><td class="col-m m-69">2.6</td><td class="col-m m-69">2.1</td><td class="col-m m-69">2.6</td><td class="col-m m-69">3.4</td><td class="col-m m-69">4.3</td><td class="col-m m-69">4.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.28 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
         </tr>
-        <tr>
-          <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
-          <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+        <tr class="row-pair row-year-70" data-crop-id="1">
+          <td class="cell-only-70" style="display:none; text-align:center;">1</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยน้ำว้า</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">44</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">47.60</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">41.52</td>
+          <td class="col-m m-70">4.6</td><td class="col-m m-70">4.2</td><td class="col-m m-70">4.2</td><td class="col-m m-70">3.7</td><td class="col-m m-70">3.3</td><td class="col-m m-70">2.9</td><td class="col-m m-70">2.5</td><td class="col-m m-70">2.1</td><td class="col-m m-70">2.5</td><td class="col-m m-70">3.3</td><td class="col-m m-70">4.2</td><td class="col-m m-70">4.2</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.28 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td style="text-align:center;">1</td>
-        <td><strong>กล้วยน้ำว้า</strong></td>
-        <td style="text-align:right;">44</td>
-        <td style="text-align:right;">47.6</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">42.80</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">41.52</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td>
-      </tr><tr>
-        <td style="text-align:center;">2</td>
-        <td><strong>กล้วยหอมทอง</strong></td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right;">5.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4.50</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">4.37</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td>
-      </tr><tr>
-        <td style="text-align:center;">3</td>
-        <td><strong>กะเพรา</strong></td>
-        <td style="text-align:right;">11</td>
-        <td style="text-align:right;">21</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">13.15</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">13.54</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.3</td>
-      </tr><tr>
-        <td style="text-align:center;">4</td>
-        <td><strong>ตะไคร้</strong></td>
-        <td style="text-align:right;">18</td>
-        <td style="text-align:right;">25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">24.95</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">25.45</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.5</td>
-      </tr><tr>
-        <td style="text-align:center;">5</td>
-        <td><strong>นาปรัง (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">351</td>
-        <td style="text-align:right;">5,756.66</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4,610</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">4,450</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1380</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2770</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">460</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">6</td>
-        <td><strong>นาปี (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">348</td>
-        <td style="text-align:right;">5,739.66</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4,590</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">4,480</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">920</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2290</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1380</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">7</td>
-        <td><strong>ผักชีฝรั่ง</strong></td>
-        <td style="text-align:right;">54</td>
-        <td style="text-align:right;">181.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">348.65</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">359.11</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">38</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">35</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">28</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">21</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">24</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">31</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">35</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">28</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">21</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">21</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">31</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">35</td>
-      </tr><tr>
-        <td style="text-align:center;">8</td>
-        <td><strong>ผักบุ้งน้ำ</strong></td>
-        <td style="text-align:right;">4</td>
-        <td style="text-align:right;">12.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">10.40</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">9.98</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td>
-      </tr><tr>
-        <td style="text-align:center;">9</td>
-        <td><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">2.60</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">2.60</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td>
-      </tr><tr>
-        <td style="text-align:center;">10</td>
-        <td><strong>มะนาว</strong></td>
-        <td style="text-align:right;">15</td>
-        <td style="text-align:right;">31.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">37.10</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">35.99</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">6.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td>
-      </tr><tr>
-        <td style="text-align:center;">11</td>
-        <td><strong>มะนาว มะนาวแป้น</strong></td>
-        <td style="text-align:right;">16</td>
-        <td style="text-align:right;">12.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">9.14</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">8.87</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td>
-      </tr><tr>
-        <td style="text-align:center;">12</td>
-        <td><strong>มะพร้าวแก่</strong></td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right;">7</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">3.92</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td>
-      </tr><tr>
-        <td style="text-align:center;">13</td>
-        <td><strong>มะพร้าวน้ำหอม</strong></td>
-        <td style="text-align:right;">30</td>
-        <td style="text-align:right;">135.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">112.75</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">117.82</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">9.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">7.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">7.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">10</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">11</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">12</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">14</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">14</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">11</td>
-      </tr><tr>
-        <td style="text-align:center;">14</td>
-        <td><strong>มะม่วงเขียวเสวย</strong></td>
-        <td style="text-align:right;">15</td>
-        <td style="text-align:right;">14.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">11.70</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">11</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">15</td>
-        <td><strong>มะม่วงน้ำดอกไม้</strong></td>
-        <td style="text-align:right;">11</td>
-        <td style="text-align:right;">33.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">12.30</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">11.56</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">16</td>
-        <td><strong>ลำไยพวงทอง</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">1</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">0.95</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">17</td>
-        <td><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right;">2.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">2.30</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">2.22</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td>
-      </tr><tr>
-        <td style="text-align:center;">18</td>
-        <td><strong>สะระแหน่</strong></td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right;">2.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">1.50</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">1.46</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td>
-      </tr>
-      </tbody>
-    </table>
-    <h3 style="margin-top:20px; color:#165b37; border-bottom:1px solid #bbf7d0; padding-bottom:4px;">ตำบลมหาสวัสดิ์ (15 รายการ)</h3>
-    <table class="report-table">
-      <thead>
-        <tr>
-          <th rowspan="2" style="width:30px;">ที่</th>
-          <th rowspan="2" style="min-width:120px;">สินค้าเกษตร</th>
-          <th rowspan="2" style="width:45px;">ครัวเรือน</th>
-          <th rowspan="2" style="width:60px;">พื้นที่ให้ผล (ไร่)</th>
-          <th rowspan="2" style="width:70px; background:#e8f5ed; color:#14532d;">ผลผลิต 2569 (ตัน)</th>
-          <th rowspan="2" style="width:70px; background:#dbeafe; color:#1e40af;">คาดการณ์ 2570 (ตัน)</th>
-          <th colspan="12">ปฏิทินผลผลิตรายเดือน (ตัน) *ทั้ง 2 ปีใช้กรอบรายเดือนเดียวกัน</th>
+      
+        <tr class="row-pair row-year-69" data-crop-id="2">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">2</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยหอมทอง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">3</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">5.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4.50</td>
+          <td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.13 ตัน (-2.9%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
         </tr>
-        <tr>
-          <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
-          <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+        <tr class="row-pair row-year-70" data-crop-id="2">
+          <td class="cell-only-70" style="display:none; text-align:center;">2</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยหอมทอง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">5.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">4.37</td>
+          <td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.13 ตัน (-2.9%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td style="text-align:center;">1</td>
-        <td><strong>กล้วยน้ำว้า</strong></td>
-        <td style="text-align:right;">12</td>
-        <td style="text-align:right;">15.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">16.15</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">15.67</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td>
-      </tr><tr>
-        <td style="text-align:center;">2</td>
-        <td><strong>กล้วยหอมทอง</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">0.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">0.50</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">0.49</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td>
-      </tr><tr>
-        <td style="text-align:center;">3</td>
-        <td><strong>นาปรัง (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">187</td>
-        <td style="text-align:right;">2,904.87</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">2,320</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">2,240</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">700</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1390</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">230</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">4</td>
-        <td><strong>นาปี (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">185</td>
-        <td style="text-align:right;">2,817.62</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">2,250</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">2,190</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">450</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1130</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">670</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">5</td>
-        <td><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right;">4</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">4</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td>
-      </tr><tr>
-        <td style="text-align:center;">6</td>
-        <td><strong>มะนาว มะนาวแป้น</strong></td>
-        <td style="text-align:right;">12</td>
-        <td style="text-align:right;">13.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">9.38</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">9.10</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td>
-      </tr><tr>
-        <td style="text-align:center;">7</td>
-        <td><strong>มะพร้าวแก่</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">4</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">3.92</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td>
-      </tr><tr>
-        <td style="text-align:center;">8</td>
-        <td><strong>มะพร้าวน้ำหอม</strong></td>
-        <td style="text-align:right;">13</td>
-        <td style="text-align:right;">32.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">30.75</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">32.13</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.1</td>
-      </tr><tr>
-        <td style="text-align:center;">9</td>
-        <td><strong>มะม่วงเขียวเสวย</strong></td>
-        <td style="text-align:right;">6</td>
-        <td style="text-align:right;">10</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">20.25</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">19.04</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">7.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">6.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.0</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">10</td>
-        <td><strong>มะม่วงน้ำดอกไม้</strong></td>
-        <td style="text-align:right;">9</td>
-        <td style="text-align:right;">12.75</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">24.60</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">23.12</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">7.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">9.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">6.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.7</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">11</td>
-        <td><strong>มะละกอแขกดำ</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">6</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">1</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">1</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td>
-      </tr><tr>
-        <td style="text-align:center;">12</td>
-        <td><strong>ลำไยพวงทอง</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">3</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">2.85</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">13</td>
-        <td><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
-        <td style="text-align:right;">3</td>
-        <td style="text-align:right;">14.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">29.50</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">28.47</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">3.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td>
-      </tr><tr>
-        <td style="text-align:center;">14</td>
-        <td><strong>ส้มโอทองดี</strong></td>
-        <td style="text-align:right;">1</td>
-        <td style="text-align:right;">4</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">8</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">7.72</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td>
-      </tr><tr>
-        <td style="text-align:center;">15</td>
-        <td><strong>ส้มโอนครชัยศรี</strong></td>
-        <td style="text-align:right;">0</td>
-        <td style="text-align:right;">0</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">0</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">0</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr>
-      </tbody>
-    </table>
-    <h3 style="margin-top:20px; color:#165b37; border-bottom:1px solid #bbf7d0; padding-bottom:4px;">ตำบลศาลายา (11 รายการ)</h3>
-    <table class="report-table">
-      <thead>
-        <tr>
-          <th rowspan="2" style="width:30px;">ที่</th>
-          <th rowspan="2" style="min-width:120px;">สินค้าเกษตร</th>
-          <th rowspan="2" style="width:45px;">ครัวเรือน</th>
-          <th rowspan="2" style="width:60px;">พื้นที่ให้ผล (ไร่)</th>
-          <th rowspan="2" style="width:70px; background:#e8f5ed; color:#14532d;">ผลผลิต 2569 (ตัน)</th>
-          <th rowspan="2" style="width:70px; background:#dbeafe; color:#1e40af;">คาดการณ์ 2570 (ตัน)</th>
-          <th colspan="12">ปฏิทินผลผลิตรายเดือน (ตัน) *ทั้ง 2 ปีใช้กรอบรายเดือนเดียวกัน</th>
+      
+        <tr class="row-pair row-year-69" data-crop-id="3">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">3</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กะเพรา</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">11</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">21</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">13.15</td>
+          <td class="col-m m-69">1.2</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.1</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.8</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.39 ตัน (+3.0%)</span></div>
+        <div class="reason-note">พืชผักสมุนไพรอายุสั้น เกษตรกรปลูกเสริมหมุนเวียนรอบเร็ว</div>
+      </td>
         </tr>
-        <tr>
-          <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
-          <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+        <tr class="row-pair row-year-70" data-crop-id="3">
+          <td class="cell-only-70" style="display:none; text-align:center;">3</td>
+          <td class="cell-only-70" style="display:none;"><strong>กะเพรา</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">11</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">21</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">13.54</td>
+          <td class="col-m m-70">1.2</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.8</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.39 ตัน (+3.0%)</span></div>
+        <div class="reason-note">พืชผักสมุนไพรอายุสั้น เกษตรกรปลูกเสริมหมุนเวียนรอบเร็ว</div>
+      </td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td style="text-align:center;">1</td>
-        <td><strong>กล้วยน้ำว้า</strong></td>
-        <td style="text-align:right;">22</td>
-        <td style="text-align:right;">24.47</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">19.50</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">18.92</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.9</td>
-      </tr><tr>
-        <td style="text-align:center;">2</td>
-        <td><strong>กล้วยหอมทอง</strong></td>
-        <td style="text-align:right;">5</td>
-        <td style="text-align:right;">8.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">6.90</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">6.69</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td>
-      </tr><tr>
-        <td style="text-align:center;">3</td>
-        <td><strong>นาปรัง (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">124</td>
-        <td style="text-align:right;">2,151.35</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">1,720</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">1,660</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">520</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1030</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">170</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">4</td>
-        <td><strong>นาปี (ข้าวเจ้า)</strong></td>
-        <td style="text-align:right;">129</td>
-        <td style="text-align:right;">2,194.24</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">1,760</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">1,720</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">350</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">880</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">530</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">5</td>
-        <td><strong>มะนาว มะนาวแป้น</strong></td>
-        <td style="text-align:right;">14</td>
-        <td style="text-align:right;">10</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">6.55</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">6.35</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.8</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td>
-      </tr><tr>
-        <td style="text-align:center;">6</td>
-        <td><strong>มะพร้าวแก่</strong></td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right;">0.5</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">0.40</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">0.39</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td>
-      </tr><tr>
-        <td style="text-align:center;">7</td>
-        <td><strong>มะพร้าวน้ำหอม</strong></td>
-        <td style="text-align:right;">8</td>
-        <td style="text-align:right;">5.015</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">3.45</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">3.61</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.3</td>
-      </tr><tr>
-        <td style="text-align:center;">8</td>
-        <td><strong>มะม่วงเขียวเสวย</strong></td>
-        <td style="text-align:right;">7</td>
-        <td style="text-align:right;">11.75</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">7.20</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">6.77</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">9</td>
-        <td><strong>มะม่วงน้ำดอกไม้</strong></td>
-        <td style="text-align:right;">17</td>
-        <td style="text-align:right;">20.385</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">17.20</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">16.17</td>
-        <td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">5.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">6.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">4.3</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.2</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td><td style="color:#cbd5e1; text-align:center;">-</td>
-      </tr><tr>
-        <td style="text-align:center;">10</td>
-        <td><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
-        <td style="text-align:right;">6</td>
-        <td style="text-align:right;">19</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">12.30</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">11.87</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.6</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.7</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.9</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.4</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">2.2</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">1.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.5</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.4</td>
-      </tr><tr>
-        <td style="text-align:center;">11</td>
-        <td><strong>ส้มโอทองดี</strong></td>
-        <td style="text-align:right;">2</td>
-        <td style="text-align:right;">1.25</td>
-        <td style="text-align:right; font-weight:bold; color:#0f4327;">0.60</td>
-        <td style="text-align:right; font-weight:bold; color:#1e40af; background:#eff6ff;">0.58</td>
-        <td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.1</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td><td style="text-align:center; font-weight:bold; color:#166534; background:#f0fdf4;">0.0</td>
-      </tr>
-      </tbody>
-    </table>
+      
+        <tr class="row-pair row-year-69" data-crop-id="4">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">4</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ตะไคร้</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">18</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">24.95</td>
+          <td class="col-m m-69">1.7</td><td class="col-m m-69">1.7</td><td class="col-m m-69">1.7</td><td class="col-m m-69">1.5</td><td class="col-m m-69">1.7</td><td class="col-m m-69">2.0</td><td class="col-m m-69">2.2</td><td class="col-m m-69">2.2</td><td class="col-m m-69">2.5</td><td class="col-m m-69">2.5</td><td class="col-m m-69">2.5</td><td class="col-m m-69">2.5</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.50 ตัน (+2.0%)</span></div>
+        <div class="reason-note">พืชทนแล้ง แตกกอดี ตอบรับความต้องการตลาดโรงงานแปรรูป</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="4">
+          <td class="cell-only-70" style="display:none; text-align:center;">4</td>
+          <td class="cell-only-70" style="display:none;"><strong>ตะไคร้</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">18</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">25.45</td>
+          <td class="col-m m-70">1.8</td><td class="col-m m-70">1.8</td><td class="col-m m-70">1.8</td><td class="col-m m-70">1.5</td><td class="col-m m-70">1.8</td><td class="col-m m-70">2.0</td><td class="col-m m-70">2.3</td><td class="col-m m-70">2.3</td><td class="col-m m-70">2.5</td><td class="col-m m-70">2.5</td><td class="col-m m-70">2.5</td><td class="col-m m-70">2.5</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.50 ตัน (+2.0%)</span></div>
+        <div class="reason-note">พืชทนแล้ง แตกกอดี ตอบรับความต้องการตลาดโรงงานแปรรูป</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="5">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">5</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">351</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">5,756.66</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4,610</td>
+          <td class="col-m m-69">1380</td><td class="col-m m-69">2770</td><td class="col-m m-69">460</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-160 ตัน (-3.5%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="5">
+          <td class="cell-only-70" style="display:none; text-align:center;">5</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">351</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">5,756.66</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">4,450</td>
+          <td class="col-m m-70">1340</td><td class="col-m m-70">2670</td><td class="col-m m-70">440</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-160 ตัน (-3.5%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="6">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">6</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">348</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">5,739.66</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4,590</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">920</td><td class="col-m m-69">2290</td><td class="col-m m-69">1380</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-110 ตัน (-2.4%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="6">
+          <td class="cell-only-70" style="display:none; text-align:center;">6</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">348</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">5,739.66</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">4,480</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">900</td><td class="col-m m-70">2240</td><td class="col-m m-70">1340</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-110 ตัน (-2.4%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="7">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">7</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ผักชีฝรั่ง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">54</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">181.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">348.65</td>
+          <td class="col-m m-69">38</td><td class="col-m m-69">35</td><td class="col-m m-69">28</td><td class="col-m m-69">21</td><td class="col-m m-69">24</td><td class="col-m m-69">31</td><td class="col-m m-69">35</td><td class="col-m m-69">28</td><td class="col-m m-69">21</td><td class="col-m m-69">21</td><td class="col-m m-69">31</td><td class="col-m m-69">35</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+10.46 ตัน (+3.0%)</span></div>
+        <div class="reason-note">ขยายโรงเรือนพรางแสงและระบบพ่นฝอยสม่ำเสมอในคลองโยง</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="7">
+          <td class="cell-only-70" style="display:none; text-align:center;">7</td>
+          <td class="cell-only-70" style="display:none;"><strong>ผักชีฝรั่ง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">54</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">181.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">359.11</td>
+          <td class="col-m m-70">40</td><td class="col-m m-70">36</td><td class="col-m m-70">29</td><td class="col-m m-70">22</td><td class="col-m m-70">25</td><td class="col-m m-70">32</td><td class="col-m m-70">36</td><td class="col-m m-70">29</td><td class="col-m m-70">22</td><td class="col-m m-70">22</td><td class="col-m m-70">32</td><td class="col-m m-70">36</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+10.46 ตัน (+3.0%)</span></div>
+        <div class="reason-note">ขยายโรงเรือนพรางแสงและระบบพ่นฝอยสม่ำเสมอในคลองโยง</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="8">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">8</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ผักบุ้งน้ำ</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">4</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">12.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">10.40</td>
+          <td class="col-m m-69">0.7</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.8</td><td class="col-m m-69">1.0</td><td class="col-m m-69">1.0</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.0</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.8</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.42 ตัน (-4.0%)</span></div>
+        <div class="reason-note">ลำรางร่องสวนเสี่ยงกระทบน้ำแห้งและความเค็มช่วงแล้งต้นปี</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="8">
+          <td class="cell-only-70" style="display:none; text-align:center;">8</td>
+          <td class="cell-only-70" style="display:none;"><strong>ผักบุ้งน้ำ</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">4</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">12.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">9.98</td>
+          <td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.8</td><td class="col-m m-70">1.0</td><td class="col-m m-70">1.0</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.0</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.8</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.42 ตัน (-4.0%)</span></div>
+        <div class="reason-note">ลำรางร่องสวนเสี่ยงกระทบน้ำแห้งและความเค็มช่วงแล้งต้นปี</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="9">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">9</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">2</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">3</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">2.60</td>
+          <td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.2</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">เกษตรกรห่อผลและดูแลตลอดปี ผลผลิตคงที่</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="9">
+          <td class="cell-only-70" style="display:none; text-align:center;">9</td>
+          <td class="cell-only-70" style="display:none;"><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">2.60</td>
+          <td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">เกษตรกรห่อผลและดูแลตลอดปี ผลผลิตคงที่</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="10">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">10</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะนาว</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">15</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">31.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">37.10</td>
+          <td class="col-m m-69">1.9</td><td class="col-m m-69">1.5</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.1</td><td class="col-m m-69">2.2</td><td class="col-m m-69">3.7</td><td class="col-m m-69">5.6</td><td class="col-m m-69">6.7</td><td class="col-m m-69">5.9</td><td class="col-m m-69">3.7</td><td class="col-m m-69">2.2</td><td class="col-m m-69">1.5</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.11 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งช่วง มี.ค.-เม.ย. ส่งผลต่อการติดผลรุ่นหลัก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="10">
+          <td class="cell-only-70" style="display:none; text-align:center;">10</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะนาว</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">15</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">31.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">35.99</td>
+          <td class="col-m m-70">1.8</td><td class="col-m m-70">1.4</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.1</td><td class="col-m m-70">2.2</td><td class="col-m m-70">3.6</td><td class="col-m m-70">5.4</td><td class="col-m m-70">6.5</td><td class="col-m m-70">5.8</td><td class="col-m m-70">3.6</td><td class="col-m m-70">2.2</td><td class="col-m m-70">1.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.11 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งช่วง มี.ค.-เม.ย. ส่งผลต่อการติดผลรุ่นหลัก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="11">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">11</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">16</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">12.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">9.14</td>
+          <td class="col-m m-69">0.5</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.9</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.1</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.5</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.27 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="11">
+          <td class="cell-only-70" style="display:none; text-align:center;">11</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">16</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">12.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">8.87</td>
+          <td class="col-m m-70">0.5</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.5</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.27 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="12">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">12</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวแก่</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">3</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">7</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4</td>
+          <td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-2.0%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="12">
+          <td class="cell-only-70" style="display:none; text-align:center;">12</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวแก่</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">7</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">3.92</td>
+          <td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-2.0%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="13">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">13</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">30</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">135.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">112.75</td>
+          <td class="col-m m-69">9.0</td><td class="col-m m-69">7.9</td><td class="col-m m-69">5.6</td><td class="col-m m-69">4.5</td><td class="col-m m-69">5.6</td><td class="col-m m-69">7.9</td><td class="col-m m-69">10</td><td class="col-m m-69">11</td><td class="col-m m-69">12</td><td class="col-m m-69">14</td><td class="col-m m-69">14</td><td class="col-m m-69">11</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+5.07 ตัน (+4.5%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="13">
+          <td class="cell-only-70" style="display:none; text-align:center;">13</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">30</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">135.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">117.82</td>
+          <td class="col-m m-70">9.4</td><td class="col-m m-70">8.2</td><td class="col-m m-70">5.9</td><td class="col-m m-70">4.7</td><td class="col-m m-70">5.9</td><td class="col-m m-70">8.2</td><td class="col-m m-70">11</td><td class="col-m m-70">12</td><td class="col-m m-70">13</td><td class="col-m m-70">14</td><td class="col-m m-70">14</td><td class="col-m m-70">12</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+5.07 ตัน (+4.5%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="14">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">14</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">15</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">14.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">11.70</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">2.3</td><td class="col-m m-69">4.3</td><td class="col-m m-69">3.9</td><td class="col-m m-69">1.2</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.70 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="14">
+          <td class="cell-only-70" style="display:none; text-align:center;">14</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">15</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">14.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">11</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">2.2</td><td class="col-m m-70">4.1</td><td class="col-m m-70">3.6</td><td class="col-m m-70">1.1</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.70 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="15">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">15</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">11</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">33.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">12.30</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">3.7</td><td class="col-m m-69">4.7</td><td class="col-m m-69">3.1</td><td class="col-m m-69">0.9</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.74 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="15">
+          <td class="cell-only-70" style="display:none; text-align:center;">15</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">11</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">33.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">11.56</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">3.5</td><td class="col-m m-70">4.4</td><td class="col-m m-70">2.9</td><td class="col-m m-70">0.8</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.74 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="16">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">16</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ลำไยพวงทอง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">1</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">1</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.2</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.05 ตัน (-5.0%)</span></div>
+        <div class="reason-note">สภาพอากาศหนาวปลายปีสั้น ไม่เอื้อต่อการกระตุ้นตาดอก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="16">
+          <td class="cell-only-70" style="display:none; text-align:center;">16</td>
+          <td class="cell-only-70" style="display:none;"><strong>ลำไยพวงทอง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">0.95</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.2</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.05 ตัน (-5.0%)</span></div>
+        <div class="reason-note">สภาพอากาศหนาวปลายปีสั้น ไม่เอื้อต่อการกระตุ้นตาดอก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="17">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">17</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">3</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">2.30</td>
+          <td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="17">
+          <td class="cell-only-70" style="display:none; text-align:center;">17</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">2.22</td>
+          <td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="18">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">18</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>สะระแหน่</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">2</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">1.50</td>
+          <td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.04 ตัน (-2.7%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อโรคใบจุดและเน่าช่วงฝนตกหนัก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="18">
+          <td class="cell-only-70" style="display:none; text-align:center;">18</td>
+          <td class="cell-only-70" style="display:none;"><strong>สะระแหน่</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">1.46</td>
+          <td class="col-m m-70">0.2</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.04 ตัน (-2.7%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อโรคใบจุดและเน่าช่วงฝนตกหนัก</div>
+      </td>
+        </tr>
+      
+        </tbody>
+      </table>
+    </div>
+    <div class="tambon-section" id="section-มหาสวัสดิ์">
+      <h3 class="tambon-header">
+        <span>ตำบลมหาสวัสดิ์ (15 รายการสินค้า)</span>
+        <span class="sub-caption">หน่วยผลผลิต: ตัน (สถิติเกษตรกร: ครัวเรือน / ไร่)</span>
+      </h3>
+      <table class="report-table" id="table-มหาสวัสดิ์">
+        <thead>
+          <tr class="head-row-main">
+            <th rowspan="2" style="width:28px;">ที่</th>
+            <th rowspan="2" style="min-width:115px;">สินค้าเกษตร</th>
+            <th rowspan="2" style="width:42px;">ครัวเรือน</th>
+            <th rowspan="2" style="width:55px;">พื้นที่ให้ผล (ไร่)</th>
+            <th rowspan="2" style="width:85px;">รอบปีข้อมูล</th>
+            <th rowspan="2" style="width:75px;">ผลผลิตรวม (ตัน)</th>
+            <th colspan="12" class="th-months">ปฏิทินผลผลิตรายเดือน (ตัน) ปี ๒๕๖๙ และคาดการณ์ ๒๕๗๐</th>
+            <th rowspan="2" style="min-width:150px;">ผลต่างปี ๗๐ / ปัจจัยสภาพภูมิอากาศ</th>
+          </tr>
+          <tr class="head-row-sub">
+            <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+            <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr class="row-pair row-year-69" data-crop-id="19">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">1</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยน้ำว้า</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">12</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">15.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">16.15</td>
+          <td class="col-m m-69">1.8</td><td class="col-m m-69">1.6</td><td class="col-m m-69">1.6</td><td class="col-m m-69">1.5</td><td class="col-m m-69">1.3</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.0</td><td class="col-m m-69">0.8</td><td class="col-m m-69">1.0</td><td class="col-m m-69">1.3</td><td class="col-m m-69">1.6</td><td class="col-m m-69">1.6</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.48 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="19">
+          <td class="cell-only-70" style="display:none; text-align:center;">1</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยน้ำว้า</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">12</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">15.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">15.67</td>
+          <td class="col-m m-70">1.7</td><td class="col-m m-70">1.6</td><td class="col-m m-70">1.6</td><td class="col-m m-70">1.4</td><td class="col-m m-70">1.3</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.9</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.3</td><td class="col-m m-70">1.6</td><td class="col-m m-70">1.6</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.48 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="20">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">2</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยหอมทอง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">0.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">0.50</td>
+          <td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.01 ตัน (-2.0%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="20">
+          <td class="cell-only-70" style="display:none; text-align:center;">2</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยหอมทอง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">0.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">0.49</td>
+          <td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.01 ตัน (-2.0%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="21">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">3</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">187</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2,904.87</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">2,320</td>
+          <td class="col-m m-69">700</td><td class="col-m m-69">1390</td><td class="col-m m-69">230</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-80 ตัน (-3.4%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="21">
+          <td class="cell-only-70" style="display:none; text-align:center;">3</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">187</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2,904.87</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">2,240</td>
+          <td class="col-m m-70">670</td><td class="col-m m-70">1340</td><td class="col-m m-70">230</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-80 ตัน (-3.4%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="22">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">4</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">185</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2,817.62</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">2,250</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">450</td><td class="col-m m-69">1130</td><td class="col-m m-69">670</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-60 ตัน (-2.7%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="22">
+          <td class="cell-only-70" style="display:none; text-align:center;">4</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">185</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2,817.62</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">2,190</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">440</td><td class="col-m m-70">1100</td><td class="col-m m-70">650</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-60 ตัน (-2.7%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="23">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">5</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">2</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">4</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4</td>
+          <td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">เกษตรกรห่อผลและดูแลตลอดปี ผลผลิตคงที่</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="23">
+          <td class="cell-only-70" style="display:none; text-align:center;">5</td>
+          <td class="cell-only-70" style="display:none;"><strong>ฝรั่ง ฝรั่งกิมจู</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">4</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">4</td>
+          <td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.3</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">เกษตรกรห่อผลและดูแลตลอดปี ผลผลิตคงที่</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="24">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">6</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">12</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">13.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">9.38</td>
+          <td class="col-m m-69">0.6</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.9</td><td class="col-m m-69">1.1</td><td class="col-m m-69">1.1</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.6</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.28 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="24">
+          <td class="cell-only-70" style="display:none; text-align:center;">6</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">12</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">13.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">9.10</td>
+          <td class="col-m m-70">0.5</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.5</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.28 ตัน (-3.0%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="25">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">7</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวแก่</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">4</td>
+          <td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-2.0%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="25">
+          <td class="cell-only-70" style="display:none; text-align:center;">7</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวแก่</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">3.92</td>
+          <td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.08 ตัน (-2.0%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="26">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">8</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">13</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">32.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">30.75</td>
+          <td class="col-m m-69">2.5</td><td class="col-m m-69">2.2</td><td class="col-m m-69">1.5</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.5</td><td class="col-m m-69">2.2</td><td class="col-m m-69">2.8</td><td class="col-m m-69">3.1</td><td class="col-m m-69">3.4</td><td class="col-m m-69">3.7</td><td class="col-m m-69">3.7</td><td class="col-m m-69">3.1</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+1.38 ตัน (+4.5%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="26">
+          <td class="cell-only-70" style="display:none; text-align:center;">8</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">13</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">32.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">32.13</td>
+          <td class="col-m m-70">2.6</td><td class="col-m m-70">2.2</td><td class="col-m m-70">1.6</td><td class="col-m m-70">1.3</td><td class="col-m m-70">1.6</td><td class="col-m m-70">2.2</td><td class="col-m m-70">2.9</td><td class="col-m m-70">3.2</td><td class="col-m m-70">3.5</td><td class="col-m m-70">3.9</td><td class="col-m m-70">3.9</td><td class="col-m m-70">3.2</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+1.38 ตัน (+4.5%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="27">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">9</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">6</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">10</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">20.25</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">4.0</td><td class="col-m m-69">7.5</td><td class="col-m m-69">6.7</td><td class="col-m m-69">2.0</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.21 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="27">
+          <td class="cell-only-70" style="display:none; text-align:center;">9</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">6</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">10</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">19.04</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">3.8</td><td class="col-m m-70">7.0</td><td class="col-m m-70">6.3</td><td class="col-m m-70">1.9</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.21 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="28">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">10</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">9</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">12.75</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">24.60</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">7.4</td><td class="col-m m-69">9.3</td><td class="col-m m-69">6.2</td><td class="col-m m-69">1.7</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.48 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="28">
+          <td class="cell-only-70" style="display:none; text-align:center;">10</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">9</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">12.75</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">23.12</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">6.9</td><td class="col-m m-70">8.8</td><td class="col-m m-70">5.8</td><td class="col-m m-70">1.6</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.48 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="29">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">11</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะละกอแขกดำ</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">6</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">1</td>
+          <td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">ปลูกแซมร่องสวน ผลผลิตทรงตัว</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="29">
+          <td class="cell-only-70" style="display:none; text-align:center;">11</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะละกอแขกดำ</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">6</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">1</td>
+          <td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">ปลูกแซมร่องสวน ผลผลิตทรงตัว</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="30">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">12</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ลำไยพวงทอง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">3</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">3</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.9</td><td class="col-m m-69">1.1</td><td class="col-m m-69">0.5</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.15 ตัน (-5.0%)</span></div>
+        <div class="reason-note">สภาพอากาศหนาวปลายปีสั้น ไม่เอื้อต่อการกระตุ้นตาดอก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="30">
+          <td class="cell-only-70" style="display:none; text-align:center;">12</td>
+          <td class="cell-only-70" style="display:none;"><strong>ลำไยพวงทอง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">2.85</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.5</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.15 ตัน (-5.0%)</span></div>
+        <div class="reason-note">สภาพอากาศหนาวปลายปีสั้น ไม่เอื้อต่อการกระตุ้นตาดอก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="31">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">13</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">3</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">14.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">29.50</td>
+          <td class="col-m m-69">1.5</td><td class="col-m m-69">1.5</td><td class="col-m m-69">1.8</td><td class="col-m m-69">1.8</td><td class="col-m m-69">2.1</td><td class="col-m m-69">2.4</td><td class="col-m m-69">3.2</td><td class="col-m m-69">5.3</td><td class="col-m m-69">5.3</td><td class="col-m m-69">2.7</td><td class="col-m m-69">1.2</td><td class="col-m m-69">0.9</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.03 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="31">
+          <td class="cell-only-70" style="display:none; text-align:center;">13</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">3</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">14.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">28.47</td>
+          <td class="col-m m-70">1.4</td><td class="col-m m-70">1.4</td><td class="col-m m-70">1.7</td><td class="col-m m-70">1.7</td><td class="col-m m-70">2.0</td><td class="col-m m-70">2.3</td><td class="col-m m-70">3.1</td><td class="col-m m-70">5.1</td><td class="col-m m-70">5.1</td><td class="col-m m-70">2.6</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.9</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.03 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="32">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">14</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอทองดี</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">1</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">4</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">8</td>
+          <td class="col-m m-69">0.6</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.8</td><td class="col-m m-69">1.3</td><td class="col-m m-69">1.3</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.28 ตัน (-3.5%)</span></div>
+        <div class="reason-note">ได้รับผลกระทบจากความเค็มและน้ำแล้งช่วงต้นปี</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="32">
+          <td class="cell-only-70" style="display:none; text-align:center;">14</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอทองดี</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">4</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">7.72</td>
+          <td class="col-m m-70">0.6</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.8</td><td class="col-m m-70">1.2</td><td class="col-m m-70">1.2</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.28 ตัน (-3.5%)</span></div>
+        <div class="reason-note">ได้รับผลกระทบจากความเค็มและน้ำแล้งช่วงต้นปี</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="33">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">15</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอนครชัยศรี</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">0</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">0</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">0</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">แปลงยังไม่ให้ผลผลิต (ฐานเดิม 0 ตัน)</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="33">
+          <td class="cell-only-70" style="display:none; text-align:center;">15</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอนครชัยศรี</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">0</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">0</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">0</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neutral">คงที่ (0.0%)</span></div>
+        <div class="reason-note">แปลงยังไม่ให้ผลผลิต (ฐานเดิม 0 ตัน)</div>
+      </td>
+        </tr>
+      
+        </tbody>
+      </table>
+    </div>
+    <div class="tambon-section" id="section-ศาลายา">
+      <h3 class="tambon-header">
+        <span>ตำบลศาลายา (11 รายการสินค้า)</span>
+        <span class="sub-caption">หน่วยผลผลิต: ตัน (สถิติเกษตรกร: ครัวเรือน / ไร่)</span>
+      </h3>
+      <table class="report-table" id="table-ศาลายา">
+        <thead>
+          <tr class="head-row-main">
+            <th rowspan="2" style="width:28px;">ที่</th>
+            <th rowspan="2" style="min-width:115px;">สินค้าเกษตร</th>
+            <th rowspan="2" style="width:42px;">ครัวเรือน</th>
+            <th rowspan="2" style="width:55px;">พื้นที่ให้ผล (ไร่)</th>
+            <th rowspan="2" style="width:85px;">รอบปีข้อมูล</th>
+            <th rowspan="2" style="width:75px;">ผลผลิตรวม (ตัน)</th>
+            <th colspan="12" class="th-months">ปฏิทินผลผลิตรายเดือน (ตัน) ปี ๒๕๖๙ และคาดการณ์ ๒๕๗๐</th>
+            <th rowspan="2" style="min-width:150px;">ผลต่างปี ๗๐ / ปัจจัยสภาพภูมิอากาศ</th>
+          </tr>
+          <tr class="head-row-sub">
+            <th>ม.ค.</th><th>ก.พ.</th><th>มี.ค.</th><th>เม.ย.</th><th>พ.ค.</th><th>มิ.ย.</th>
+            <th>ก.ค.</th><th>ส.ค.</th><th>ก.ย.</th><th>ต.ค.</th><th>พ.ย.</th><th>ธ.ค.</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr class="row-pair row-year-69" data-crop-id="34">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">1</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยน้ำว้า</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">22</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">24.47</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">19.50</td>
+          <td class="col-m m-69">2.1</td><td class="col-m m-69">1.9</td><td class="col-m m-69">1.9</td><td class="col-m m-69">1.8</td><td class="col-m m-69">1.6</td><td class="col-m m-69">1.4</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.0</td><td class="col-m m-69">1.2</td><td class="col-m m-69">1.6</td><td class="col-m m-69">1.9</td><td class="col-m m-69">1.9</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.58 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="34">
+          <td class="cell-only-70" style="display:none; text-align:center;">1</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยน้ำว้า</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">22</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">24.47</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">18.92</td>
+          <td class="col-m m-70">2.1</td><td class="col-m m-70">1.9</td><td class="col-m m-70">1.9</td><td class="col-m m-70">1.7</td><td class="col-m m-70">1.5</td><td class="col-m m-70">1.3</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.1</td><td class="col-m m-70">1.5</td><td class="col-m m-70">1.9</td><td class="col-m m-70">1.9</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.58 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ความเสี่ยงโรคตายพรายในสวนเดิมและพายุฤดูร้อนช่วง เม.ย.-พ.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="35">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">2</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>กล้วยหอมทอง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">5</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">8.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">6.90</td>
+          <td class="col-m m-69">0.7</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.7</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.21 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="35">
+          <td class="cell-only-70" style="display:none; text-align:center;">2</td>
+          <td class="cell-only-70" style="display:none;"><strong>กล้วยหอมทอง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">5</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">8.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">6.69</td>
+          <td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.21 ตัน (-3.0%)</span></div>
+        <div class="reason-note">ไวต่อลมและสภาพอากาศร้อนจัดช่วงติดผล</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="36">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">3</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">124</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2,151.35</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">1,720</td>
+          <td class="col-m m-69">520</td><td class="col-m m-69">1030</td><td class="col-m m-69">170</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-60 ตัน (-3.5%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="36">
+          <td class="cell-only-70" style="display:none; text-align:center;">3</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปรัง (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">124</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2,151.35</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">1,660</td>
+          <td class="col-m m-70">500</td><td class="col-m m-70">1000</td><td class="col-m m-70">160</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-60 ตัน (-3.5%)</span></div>
+        <div class="reason-note">มาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="37">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">4</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">129</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">2,194.24</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">1,760</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">350</td><td class="col-m m-69">880</td><td class="col-m m-69">530</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-40 ตัน (-2.3%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="37">
+          <td class="cell-only-70" style="display:none; text-align:center;">4</td>
+          <td class="cell-only-70" style="display:none;"><strong>นาปี (ข้าวเจ้า)</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">129</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2,194.24</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">1,720</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">340</td><td class="col-m m-70">860</td><td class="col-m m-70">520</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-40 ตัน (-2.3%)</span></div>
+        <div class="reason-note">เสี่ยงน้ำหลากปลายฤดูในที่ลุ่มต่ำและฝนชุกช่วงเก็บเกี่ยว ส.ค.-ต.ค.</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="38">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">5</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">14</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">10</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">6.55</td>
+          <td class="col-m m-69">0.4</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.8</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.20 ตัน (-3.1%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="38">
+          <td class="cell-only-70" style="display:none; text-align:center;">5</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะนาว มะนาวแป้น</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">14</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">10</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">6.35</td>
+          <td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.20 ตัน (-3.1%)</span></div>
+        <div class="reason-note">อากาศร้อนแล้งกระทบการติดดอกและการผสมเกสร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="39">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">6</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวแก่</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">2</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">0.50</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">0.40</td>
+          <td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.01 ตัน (-2.5%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="39">
+          <td class="cell-only-70" style="display:none; text-align:center;">6</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวแก่</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">0.50</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">0.39</td>
+          <td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.01 ตัน (-2.5%)</span></div>
+        <div class="reason-note">สวนมะพร้าวแก่วัยชราทยอยลดลง เปลี่ยนเป็นมะพร้าวน้ำหอม</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="40">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">7</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">8</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">5.015</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">3.45</td>
+          <td class="col-m m-69">0.3</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.2</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.3</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.4</td><td class="col-m m-69">0.3</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.16 ตัน (+4.6%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="40">
+          <td class="cell-only-70" style="display:none; text-align:center;">7</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะพร้าวน้ำหอม</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">8</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">5.015</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">3.61</td>
+          <td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.2</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.3</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td><td class="col-m m-70">0.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge pos">+0.16 ตัน (+4.6%)</span></div>
+        <div class="reason-note">ต้นที่ปลูกทดแทนช่วง 3-4 ปีก่อน เข้าสู่วัยให้ผลผลิตเต็มที่เพิ่มขึ้น</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="41">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">8</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">7</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">11.75</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">7.20</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">1.4</td><td class="col-m m-69">2.7</td><td class="col-m m-69">2.4</td><td class="col-m m-69">0.7</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.43 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="41">
+          <td class="cell-only-70" style="display:none; text-align:center;">8</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงเขียวเสวย</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">7</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">11.75</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">6.77</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">1.4</td><td class="col-m m-70">2.5</td><td class="col-m m-70">2.2</td><td class="col-m m-70">0.7</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.43 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) และร้อนจัดช่วงแทงช่อดอก</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="42">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">9</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">17</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">20.385</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">17.20</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-69">5.2</td><td class="col-m m-69">6.5</td><td class="col-m m-69">4.3</td><td class="col-m m-69">1.2</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.03 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="42">
+          <td class="cell-only-70" style="display:none; text-align:center;">9</td>
+          <td class="cell-only-70" style="display:none;"><strong>มะม่วงน้ำดอกไม้</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">17</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">20.385</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">16.17</td>
+          <td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-70">4.9</td><td class="col-m m-70">6.1</td><td class="col-m m-70">4.0</td><td class="col-m m-70">1.1</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td><td class="col-m m-zero">-</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-1.03 ตัน (-6.0%)</span></div>
+        <div class="reason-note">ปีเว้นปี (Alternate bearing) ต้นพักตัวสะสมอาหาร</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="43">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">10</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">6</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">19</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">12.30</td>
+          <td class="col-m m-69">0.6</td><td class="col-m m-69">0.6</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.7</td><td class="col-m m-69">0.9</td><td class="col-m m-69">1.0</td><td class="col-m m-69">1.4</td><td class="col-m m-69">2.2</td><td class="col-m m-69">2.2</td><td class="col-m m-69">1.1</td><td class="col-m m-69">0.5</td><td class="col-m m-69">0.4</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.43 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="43">
+          <td class="cell-only-70" style="display:none; text-align:center;">10</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอขาวน้ำผึ้ง</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">6</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">19</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">11.87</td>
+          <td class="col-m m-70">0.6</td><td class="col-m m-70">0.6</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.7</td><td class="col-m m-70">0.8</td><td class="col-m m-70">0.9</td><td class="col-m m-70">1.3</td><td class="col-m m-70">2.1</td><td class="col-m m-70">2.1</td><td class="col-m m-70">1.1</td><td class="col-m m-70">0.5</td><td class="col-m m-70">0.4</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.43 ตัน (-3.5%)</span></div>
+        <div class="reason-note">อ่อนไหวต่อภาวะความเค็มรุกคลองท่าจีน/มหาสวัสดิ์ช่วงแล้ง</div>
+      </td>
+        </tr>
+      
+        <tr class="row-pair row-year-69" data-crop-id="44">
+          <td rowspan="2" class="cell-shared cell-idx" style="text-align:center;">11</td>
+          <td rowspan="2" class="cell-shared cell-crop"><strong>ส้มโอทองดี</strong></td>
+          <td rowspan="2" class="cell-shared cell-hh" style="text-align:right;">2</td>
+          <td rowspan="2" class="cell-shared cell-area" style="text-align:right;">1.25</td>
+          <td class="cell-year"><span class="badge-year badge-69">ปี ๒๕๖๙</span></td>
+          <td class="cell-total total-69" style="text-align:right;">0.60</td>
+          <td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.1</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td><td class="col-m m-69">0.0</td>
+          <td rowspan="2" class="cell-shared cell-diff">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.02 ตัน (-3.3%)</span></div>
+        <div class="reason-note">ได้รับผลกระทบจากความเค็มและน้ำแล้งช่วงต้นปี</div>
+      </td>
+        </tr>
+        <tr class="row-pair row-year-70" data-crop-id="44">
+          <td class="cell-only-70" style="display:none; text-align:center;">11</td>
+          <td class="cell-only-70" style="display:none;"><strong>ส้มโอทองดี</strong></td>
+          <td class="cell-only-70" style="display:none; text-align:right;">2</td>
+          <td class="cell-only-70" style="display:none; text-align:right;">1.25</td>
+          <td class="cell-year"><span class="badge-year badge-70">คาดการณ์ ๒๕๗๐</span></td>
+          <td class="cell-total total-70" style="text-align:right;">0.58</td>
+          <td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.1</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td><td class="col-m m-70">0.0</td>
+          <td class="cell-only-70 cell-diff" style="display:none;">
+        <div style="font-weight:700; margin-bottom:3px;"><span class="diff-badge neg">-0.02 ตัน (-3.3%)</span></div>
+        <div class="reason-note">ได้รับผลกระทบจากความเค็มและน้ำแล้งช่วงต้นปี</div>
+      </td>
+        </tr>
+      
+        </tbody>
+      </table>
+    </div>
   </div>
 
+  <script>
+    function switchTableView(mode) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('tab-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const tables = document.querySelectorAll('.report-table');
+      tables.forEach(table => {
+        const rows69 = table.querySelectorAll('.row-year-69');
+        const rows70 = table.querySelectorAll('.row-year-70');
+        const sharedCells = table.querySelectorAll('.cell-shared');
+        const only70Cells = table.querySelectorAll('.cell-only-70');
+
+        if (mode === 'compare') {
+          rows69.forEach(r => r.style.display = '');
+          rows70.forEach(r => r.style.display = '');
+          sharedCells.forEach(td => td.setAttribute('rowspan', '2'));
+          only70Cells.forEach(td => td.style.display = 'none');
+        } else if (mode === '2569') {
+          rows69.forEach(r => r.style.display = '');
+          rows70.forEach(r => r.style.display = 'none');
+          sharedCells.forEach(td => td.setAttribute('rowspan', '1'));
+          only70Cells.forEach(td => td.style.display = 'none');
+        } else if (mode === '2570') {
+          rows69.forEach(r => r.style.display = 'none');
+          rows70.forEach(r => r.style.display = '');
+          only70Cells.forEach(td => td.style.display = '');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
