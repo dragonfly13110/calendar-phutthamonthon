@@ -1247,6 +1247,19 @@
             },
             y: {
               beginAtZero: true,
+              title: { display: false },
+              ticks: {
+                callback: function(val) { return val.toLocaleString() + ' ตัน'; },
+                font: { family: 'Inter', size: 11 }
+              }
+            },
+            yOther: {
+              type: 'linear',
+              position: 'right',
+              display: false,
+              beginAtZero: true,
+              title: { display: false },
+              grid: { drawOnChartArea: false },
               ticks: {
                 callback: function(val) { return val.toLocaleString() + ' ตัน'; },
                 font: { family: 'Inter', size: 11 }
@@ -1281,6 +1294,9 @@
 
       if (currentView === 'compare') {
         monthlyChart.options.scales.y.stacked = false;
+        monthlyChart.options.scales.y.title.display = false;
+        monthlyChart.options.scales.yOther.display = false;
+        document.getElementById('chart-sub-text').innerText = 'เปรียบเทียบปริมาณผลผลิตรายเดือน ม.ค. - ธ.ค. เพื่อวิเคราะห์ช่วงผลผลิตออกสู่ตลาดสูงสุด (Peak Harvest)';
         monthlyChart.data.datasets = [
           {
             label: 'ผลผลิตปี 2569 (ตัน)',
@@ -1297,25 +1313,32 @@
         ];
       } else {
         const yearLabel = currentView === '2570' ? 'ปี 2570' : 'ปี 2569';
-        monthlyChart.options.scales.y.stacked = true;
+        monthlyChart.options.scales.y.stacked = false;
+        monthlyChart.options.scales.y.title = { display: true, text: 'ข้าว (ตัน)' };
+        monthlyChart.options.scales.yOther.display = true;
+        monthlyChart.options.scales.yOther.title = { display: true, text: 'ไม้ผลและพืชผัก (ตัน)' };
+        document.getElementById('chart-sub-text').innerText = 'แสดงแท่งแยกตามหมวดพืช โดยใช้แกนซ้ายสำหรับข้าวและแกนขวาสำหรับไม้ผลกับพืชผัก';
         monthlyChart.data.datasets = [
           {
-            label: 'ข้าว (นาปี/นาปรัง) ' + yearLabel,
+            label: 'ข้าว (นาปี/นาปรัง, แกนซ้าย) ' + yearLabel,
             data: riceM,
             backgroundColor: '#16a34a',
-            borderRadius: 4
+            borderRadius: 4,
+            yAxisID: 'y'
           },
           {
-            label: 'ไม้ผลไม้ยืนต้น ' + yearLabel,
+            label: 'ไม้ผลไม้ยืนต้น (แกนขวา) ' + yearLabel,
             data: fruitM,
             backgroundColor: '#d97706',
-            borderRadius: 4
+            borderRadius: 4,
+            yAxisID: 'yOther'
           },
           {
-            label: 'พืชผักและสมุนไพร ' + yearLabel,
+            label: 'พืชผักและสมุนไพร (แกนขวา) ' + yearLabel,
             data: vegM,
             backgroundColor: '#0284c7',
-            borderRadius: 4
+            borderRadius: 4,
+            yAxisID: 'yOther'
           }
         ];
       }
