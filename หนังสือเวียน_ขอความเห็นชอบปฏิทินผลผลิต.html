@@ -3,166 +3,472 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>หนังสือเวียนขอความเห็นชอบปฏิทินผลผลิตสินค้าเกษตร อ.พุทธมณฑล 2569 และคาดการณ์ 2570</title>
+  <title>ชุดเอกสารการประชุมเวียน ขอความเห็นชอบปฏิทินผลผลิตสินค้าเกษตร อำเภอพุทธมณฑล (พืช) ปี ๒๕๖๙ และประมาณการปี ๒๕๗๐</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @page { size: A4 landscape; margin: 12mm 12mm; }
+    /* มาตรฐานหน้ากระดาษราชการตาม นร ๐๑๐๖/ว ๒๐๑๙:
+       - กระดาษ A4
+       - ขอบซ้าย ๓.๐ ซม. (30mm)
+       - ขอบขวา ๒.๐ ซม. (20mm)
+       - ขอบบน ๒.๕ ซม. (25mm)
+       - ขอบล่าง ๒.๐ ซม. (20mm)
+       - กั้นหน้า ๐ ซม. กั้นหลัง ๑๖ ซม.
+    */
+    @page {
+      size: A4 portrait;
+      margin: 25mm 20mm 20mm 30mm;
+    }
+    @page landscape-section {
+      size: A4 landscape;
+      margin: 15mm 15mm 15mm 20mm;
+    }
     * { box-sizing: border-box; }
     body {
-      font-family: 'Sarabun', 'TH Sarabun New', sans-serif;
+      font-family: 'TH Sarabun New', 'TH SarabunPSK', 'Sarabun', sans-serif;
       margin: 0;
-      color: #1e293b;
-      background: #f1f5f9;
-      font-size: 14.5px;
-      line-height: 1.6;
-    }
-    .tools {
-      max-width: 1050px;
-      margin: 16px auto;
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-    .print-btn {
-      background: #155e38;
-      color: white;
-      border: 0;
-      padding: 9px 20px;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .web-btn {
-      background: #0284c7;
-      color: white;
-      border: 0;
-      padding: 9px 20px;
-      border-radius: 6px;
-      font-size: 14px;
-      text-decoration: none;
-      font-family: inherit;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .doc-page {
-      max-width: 1050px;
-      margin: 0 auto 30px;
-      background: white;
-      padding: 38px 48px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border-radius: 4px;
-    }
-    .doc-page.break { page-break-before: always; }
-    
-    .memo-header {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 18px;
-      border-bottom: 2px solid #000;
-      padding-bottom: 12px;
-    }
-    .garuda-wrap {
-      width: 75px;
-      text-align: center;
-      margin-right: 20px;
-    }
-    .memo-title-block { flex: 1; }
-    .memo-title-block h1 {
-      font-size: 26px;
-      font-weight: 700;
-      margin: 0 0 4px;
       color: #000;
-    }
-    .memo-info-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-    .memo-info-table td {
-      padding: 3px 0;
-      vertical-align: top;
+      background: #f1f5f9;
+      font-size: 16pt;
+      line-height: 1.15;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Top Sticky Control Bar */
+    .top-navbar {
+      background: #0f3d24;
+      color: white;
+      padding: 10px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-family: 'Sarabun', sans-serif;
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-brand h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.3px;
+    }
+    .nav-brand p {
+      margin: 0;
+      font-size: 12px;
+      color: #86efac;
+    }
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: 'Sarabun', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 0;
+      text-decoration: none;
+      transition: all 0.15s ease-in-out;
+    }
+    .btn-print {
+      background: #eab308;
+      color: #1e293b;
+    }
+    .btn-print:hover {
+      background: #facc15;
+    }
+    .btn-web {
+      background: #0284c7;
+      color: white;
+    }
+    .btn-web:hover {
+      background: #0369a1;
+    }
+    .btn-download {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-download:hover {
+      background: #1d4ed8;
+    }
+
+    /* Document Switcher Tabs */
+    .doc-nav-tabs {
+      max-width: 1050px;
+      margin: 16px auto 0;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 0 16px;
+      font-family: 'Sarabun', sans-serif;
+    }
+    .doc-tab-btn {
+      background: #e2e8f0;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      border-bottom: 0;
+      padding: 8px 16px;
+      border-radius: 8px 8px 0 0;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .doc-tab-btn:hover {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    .doc-tab-btn.active {
+      background: white;
+      color: #0f3d24;
+      border-color: #cbd5e1;
+      border-top: 3px solid #155e38;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.04);
+    }
+
+    /* Viewport & Document Container */
+    .doc-viewport {
+      max-width: 1050px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+    .doc-page {
+      background: white;
+      padding: 25mm 20mm 20mm 30mm;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      border-radius: 0 0 4px 4px;
+      color: #000;
+      position: relative;
+      font-size: 16pt;
+      line-height: 1.15;
+    }
+    .doc-page.landscape-page {
+      page: landscape-section;
+      max-width: 100%;
+      padding: 20mm 15mm 15mm 20mm;
+    }
+    .doc-page.break {
+      page-break-before: always;
+    }
+
+    /* ========================================================= */
+    /* กฎการจัดวางหนังสือภายนอกตามระเบียบงานสารบรรณ พ.ศ. ๒๕๒๖     */
+    /* ========================================================= */
+    /* ตราครุฑสูง ๓.๐ ซม. กึ่งกลางหน้ากระดาษ ห่างขอบบน ๒.๕ ซม. */
+    .gov-garuda-center {
+      text-align: center;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+    .gov-garuda-center img {
+      height: 3.0cm;
+      width: auto;
+    }
+
+    /* ตารางส่วนหัว: ๒ คอลัมน์ (ซ้าย ๘.๐ ซม. ขวา ๘.๐ ซม.) */
+    .gov-header-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+      margin-bottom: 0;
+      table-layout: fixed;
+    }
+    .gov-header-table td {
+      padding: 0;
+      vertical-align: top;
+      font-size: 16pt;
+      line-height: 1.15;
+    }
+    .gov-header-col-left {
+      width: 50%;
+      text-align: left;
+    }
+    .gov-header-col-right {
+      width: 50%;
+      text-align: left;
+      padding-left: 0.5cm;
+    }
+
+    /* วัน เดือน ปี: ตั้งแท็บที่ ๘.๐ ซม. (กึ่งกลางหน้ากระดาษ) ใต้ส่วนราชการ ๑ บรรทัด */
+    .gov-date-row {
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+      margin-left: 50%;
+      padding-left: 0.5cm;
+      font-size: 16pt;
+      line-height: 1.15;
+    }
+
+    /* รายการ เรื่อง / เรียน / อ้างถึง / สิ่งที่ส่งมาด้วย */
+    .gov-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+    }
+    .gov-meta-table td {
+      padding: 2pt 0;
+      vertical-align: top;
+      font-size: 16pt;
+      line-height: 1.15;
+    }
+    .gov-meta-label {
+      width: 3.2cm;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* ย่อหน้าข้อความ: Indent ๒.๕ ซม. บรรทัดปกติ จัดแนวกระจายแบบไทย ชิดทั้งซ้ายและขวา */
+    .gov-p {
+      text-indent: 2.5cm;
+      margin: 6pt 0;
+      text-align: justify;
+      text-justify: inter-word;
+      text-align-last: left;
+      -webkit-text-align-last: left;
+      line-height: 1.25;
+      word-break: normal;
+      line-break: loose;
+    }
+    .gov-p-end {
+      text-indent: 2.5cm;
+      margin-top: 6pt;
+      margin-bottom: 12pt;
+      text-align: justify;
+      text-justify: inter-word;
+      text-align-last: left;
+      -webkit-text-align-last: left;
+      line-height: 1.25;
+      word-break: normal;
+      line-break: loose;
+    }
+
+    /* คำลงท้าย "ขอแสดงความนับถือ": ตั้งแท็บที่ ๘.๐ ซม. (ตรงกับแนววันที่) */
+    .gov-closing-block {
+      margin-left: 50%;
+      padding-left: 0.5cm;
+      margin-top: 12pt;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+    .gov-sign-space {
+      height: 2.2cm;
+    }
+    .gov-signer-name {
+      font-weight: bold;
+    }
+
+    /* ส่วนราชการเจ้าของเรื่อง (มุมล่างซ้าย ชิดกั้นหน้า) */
+    .gov-contact-footer {
+      margin-top: 18pt;
+      font-size: 14.5pt;
+      line-height: 1.2;
+    }
+
+    /* บัญชีรายชื่อแนบท้าย */
+    .gov-dist-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14pt;
+      font-size: 15pt;
+    }
+    .gov-dist-table th, .gov-dist-table td {
+      border: 1px solid #000;
+      padding: 5pt 8pt;
+      vertical-align: middle;
+    }
+    .gov-dist-table th {
+      background: #f8fafc;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* ========================================================= */
+    /* ระเบียบวาระการประชุม & รายงานการประชุม                    */
+    /* ========================================================= */
+    .agenda-title-block {
+      text-align: center;
+      margin-bottom: 16pt;
+      line-height: 1.3;
+    }
+    .agenda-title-block h2 {
+      font-size: 18pt;
+      font-weight: bold;
+      margin: 0 0 2pt;
+    }
+    .agenda-title-block p {
+      margin: 1pt 0;
+      font-size: 16pt;
+    }
+
+    .agenda-item {
+      margin-bottom: 16pt;
+    }
+    .agenda-header {
+      font-weight: bold;
+      font-size: 16pt;
+      margin-bottom: 4pt;
+    }
+    .agenda-body {
+      text-indent: 2.5cm;
+      text-align: justify;
+      text-justify: inter-word;
+      text-align-last: left;
+      -webkit-text-align-last: left;
+      margin-bottom: 6pt;
+      line-height: 1.25;
+      word-break: normal;
+      line-break: loose;
+    }
+    .agenda-sub-desc {
+      text-align: justify;
+      text-justify: inter-word;
+      text-align-last: left;
+      -webkit-text-align-last: left;
+      line-height: 1.3;
+      word-break: normal;
+      line-break: loose;
+    }
+    .agenda-resolution-box {
+      background: #fdfdfd;
+      border: 1px solid #cbd5e1;
+      padding: 8pt 14pt;
+      margin: 6pt 0 10pt 2.0cm;
+      border-radius: 4px;
+      font-size: 15pt;
+      line-height: 1.4;
+      text-align: justify;
+      text-justify: inter-word;
+      text-align-last: left;
+      -webkit-text-align-last: left;
+      word-break: normal;
+      line-break: loose;
+    }
+    .agenda-ballot-row {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 4pt;
+      font-weight: bold;
+    }
+    .dotted-fill {
+      border-bottom: 1px dotted #94a3b8;
+      display: inline-block;
+      width: 80%;
+      height: 16pt;
+      vertical-align: bottom;
+    }
+
+    /* Ballot signature */
+    .ballot-signature-block {
+      margin-left: 50%;
+      padding-left: 0.5cm;
+      text-align: center;
+      margin-top: 18pt;
+      line-height: 1.35;
+    }
+
+    /* QR Code Card in Attachment */
     .qr-hero-card {
       background: #f8faf8;
       border: 2px solid #155e38;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 18px 0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 18px;
+      font-family: 'Sarabun', sans-serif;
     }
     .qr-img {
-      width: 130px;
-      height: 130px;
-      border-radius: 8px;
+      width: 110px;
+      height: 110px;
+      border-radius: 6px;
       border: 1px solid #cbd5e1;
       background: white;
-      padding: 5px;
+      padding: 4px;
     }
     .qr-content h4 {
-      font-size: 16.5px;
+      font-size: 15.5px;
       color: #155e38;
-      margin: 0 0 6px;
+      margin: 0 0 4px;
       font-weight: 700;
     }
     .qr-content p {
-      margin: 0 0 8px;
-      font-size: 13.5px;
+      margin: 0 0 6px;
+      font-size: 13px;
       color: #334155;
-      line-height: 1.5;
+      line-height: 1.45;
     }
     .qr-url {
       font-family: monospace;
-      font-size: 12.5px;
+      font-size: 12px;
       background: #e2e8f0;
-      padding: 4px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
       display: inline-block;
       color: #0f172a;
       word-break: break-all;
     }
 
+    /* Controls for Crop Table */
     .view-controls {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin: 16px 0 20px;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 12px 0 16px;
+      font-family: 'Sarabun', sans-serif;
     }
     .view-controls-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .view-controls-title {
       font-weight: 700;
       color: #155e38;
-      font-size: 14.5px;
+      font-size: 14px;
     }
     .view-tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
     .tab-btn {
       background: white;
       border: 1px solid #94a3b8;
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 5px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       cursor: pointer;
       color: #334155;
       font-weight: 600;
@@ -170,24 +476,23 @@
     }
     .tab-btn:hover {
       background: #f1f5f9;
-      border-color: #64748b;
     }
     .tab-btn.active {
       background: #155e38;
       color: white;
       border-color: #155e38;
-      box-shadow: 0 2px 4px rgba(21, 94, 56, 0.2);
     }
 
     .tambon-header {
-      margin-top: 24px;
+      margin-top: 20px;
       color: #165b37;
       border-bottom: 2px solid #bbf7d0;
-      padding-bottom: 5px;
+      padding-bottom: 4px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 17px;
+      font-size: 16.5px;
+      font-family: 'Sarabun', sans-serif;
     }
     .sub-caption {
       font-size: 12px;
@@ -195,16 +500,18 @@
       color: #64748b;
     }
 
+    /* 44-crop Table */
     .report-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11px;
-      margin: 10px 0 24px;
-      line-height: 1.35;
+      font-size: 10.5px;
+      margin: 8px 0 20px;
+      line-height: 1.3;
+      font-family: 'Sarabun', sans-serif;
     }
     .report-table th, .report-table td {
       border: 1px solid #cbd5e1;
-      padding: 4px 4px;
+      padding: 3.5px 3.5px;
       vertical-align: middle;
     }
     .report-table th {
@@ -215,9 +522,9 @@
     }
     .badge-year {
       display: inline-block;
-      padding: 2px 5px;
-      border-radius: 4px;
-      font-size: 10px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 9.5px;
       font-weight: 700;
       white-space: nowrap;
     }
@@ -243,7 +550,7 @@
     }
     .col-m {
       text-align: center;
-      font-size: 10.5px;
+      font-size: 10px;
     }
     .m-zero {
       color: #94a3b8;
@@ -260,9 +567,9 @@
     }
     .diff-badge {
       display: inline-block;
-      padding: 2px 5px;
-      border-radius: 4px;
-      font-size: 10px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 9.5px;
       font-weight: 700;
     }
     .diff-badge.pos {
@@ -273,174 +580,515 @@
       background: #fee2e2;
       color: #b91c1c;
     }
-    .diff-badge.neutral {
-      background: #f1f5f9;
-      color: #64748b;
-    }
     .reason-note {
-      font-size: 10px;
+      font-size: 9.5px;
       color: #475569;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
-    .ballot-box {
-      border: 2px dashed #94a3b8;
-      background: #fafafa;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-top: 18px;
-    }
-    .ballot-title {
-      font-size: 15.5px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-align: center;
-      color: #1e293b;
-    }
-    .ballot-options {
-      margin-bottom: 12px;
-      font-size: 14.5px;
-      line-height: 1.7;
-    }
-    .signature-area {
+    /* Download Box */
+    .download-panel {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
       display: flex;
-      justify-content: flex-end;
-      margin-top: 14px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Sarabun', sans-serif;
     }
-    .signature-block {
-      width: 320px;
-      text-align: center;
-      line-height: 1.7;
+    .download-panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1d4ed8;
     }
 
+    /* ========================================================= */
+    /* กฎการพิมพ์มาตรฐาน (Print CSS)                            */
+    /* ========================================================= */
     @media print {
-      body { background: white; font-size: 11px; }
-      .tools, .view-controls { display: none !important; }
-      .doc-page { max-width: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
-      .report-table { font-size: 9px; page-break-inside: auto; }
-      .report-table tr { page-break-inside: avoid; }
-      .report-table th, .report-table td { padding: 2.5px 3px; }
-      .reason-note { font-size: 8.5px; }
-      .badge-year, .diff-badge { font-size: 8.5px; padding: 1px 3px; }
-      .qr-hero-card { border: 1px solid #000; padding: 10px; }
-      .qr-img { width: 100px; height: 100px; }
+      body {
+        background: white;
+        font-size: 16pt;
+        color: black;
+      }
+      .top-navbar, .doc-nav-tabs, .view-controls, .download-panel {
+        display: none !important;
+      }
+      .doc-viewport {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+      }
+      .doc-page {
+        padding: 0;
+        margin: 0 0 25mm;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .doc-page.landscape-page {
+        margin: 0;
+        padding: 0;
+      }
+      .report-table {
+        font-size: 8pt;
+      }
+      .report-table th, .report-table td {
+        padding: 2px 2px;
+      }
+      .report-table tr {
+        page-break-inside: avoid;
+      }
+      .qr-hero-card {
+        border: 1px solid #000;
+        padding: 6px;
+      }
+      .qr-img {
+        width: 80px;
+        height: 80px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="tools">
-    <a href="https://dragonfly13110.github.io/calendar-phutthamonthon/" target="_blank" class="web-btn">🌐 เปิดเว็บไซต์ปฏิทินผลผลิต (มือถือ/PC)</a>
-    <button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
-  </div>
-
-  <div class="doc-page">
-    <div class="memo-header">
-      <div class="garuda-wrap">
-        <svg viewBox="0 0 100 100" style="width:65px; height:65px; fill:#991b1b;">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="#991b1b" stroke-width="3"/>
-          <text x="50" y="55" font-size="28" text-anchor="middle" font-weight="bold" fill="#991b1b">ครุฑ</text>
-        </svg>
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="data:image/png;base64,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" style="height:32px; width:auto; filter:brightness(0) invert(1);" alt="ครุฑ">
+        <div>
+          <h2>ระบบเอกสารการประชุมเวียน คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ</h2>
+          <p>อำเภอพุทธมณฑล จังหวัดนครปฐม • ตามระเบียบสำนักนายกรัฐมนตรีว่าด้วยงานสารบรรณ พ.ศ. ๒๕๒๖</p>
+        </div>
       </div>
-      <div class="memo-title-block">
-        <h1>บันทึกข้อความ</h1>
-        <table class="memo-info-table">
+      <div class="nav-actions">
+        <a href="https://dragonfly13110.github.io/calendar-phutthamonthon/" target="_blank" class="btn btn-web">🌐 เปิดเว็บไซต์ปฏิทินผลผลิต</a>
+        <button class="btn btn-print" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Document Switcher Tabs -->
+  <nav class="doc-nav-tabs" aria-label="สลับฉบับเอกสาร">
+    <button class="doc-tab-btn active" onclick="switchDoc('doc-letter')">📑 ฉบับที่ ๑: หนังสือขอเชิญประชุมเวียน</button>
+    <button class="doc-tab-btn" onclick="switchDoc('doc-agenda')">📋 ฉบับที่ ๒: ระเบียบวาระการประชุมเวียน & แบบตอบรับ</button>
+    <button class="doc-tab-btn" onclick="switchDoc('doc-table')">📊 ฉบับที่ ๓: ตารางปฏิทินผลผลิต ๔๔ สินค้า (เอกสารแนบ)</button>
+    <button class="doc-tab-btn" onclick="switchDoc('doc-minutes')">📝 ฉบับที่ ๔: (ร่าง) รายงานการประชุมเวียน</button>
+    <button class="doc-tab-btn" onclick="switchDoc('all')">📚 แสดงทุกฉบับ (Full Set รวมพิมพ์เล่ม)</button>
+  </nav>
+
+  <main class="doc-viewport">
+
+    <!-- DOWNLOAD PANEL FOR WORD DOCX -->
+    <div class="download-panel">
+      <div>
+        <div class="download-panel-title">💾 ไฟล์ Microsoft Word (.docx) ตามระเบียบงานสารบรรณ (TH Sarabun New ๑๖pt + ตราครุฑ):</div>
+        <div style="font-size:12.5px; color:#475569;">สร้างตามหนังสือสำนักนายกรัฐมนตรี ที่ นร ๐๑๐๖/ว ๒๐๑๙ ระยะขอบซ้าย ๓ ซม. ขวา ๒ ซม. บน ๒.๕ ซม. ล่าง ๒ ซม.</div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a href="หนังสือเชิญประชุมมติเวียน_ปฏิทินผลผลิตพืช_พุทธมณฑล.docx" class="btn btn-download" download>📥 หนังสือเชิญประชุม (.docx)</a>
+        <a href="ระเบียบวาระการประชุมเวียน_ปฏิทินผลผลิตพืช_พุทธมณฑล.docx" class="btn btn-download" download>📥 ระเบียบวาระ & แบบมติ (.docx)</a>
+        <a href="รายงานการประชุมเวียน_ปฏิทินผลผลิตพืช_พุทธมณฑล.docx" class="btn btn-download" download>📥 รายงานการประชุม (.docx)</a>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- DOC 1: หนังสือขอเชิญประชุมเวียน (Official External Letter) -->
+    <!-- ============================================================== -->
+    <article id="doc-letter" class="doc-wrapper">
+      <div class="doc-page">
+        <!-- ตราครุฑสูง ๓.๐ ซม. กึ่งกลางหน้ากระดาษ ห่างขอบบน ๒.๕ ซม. -->
+        <div class="gov-garuda-center">
+          <img src="data:image/png;base64,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" alt="ตราครุฑ">
+        </div>
+
+        <!-- ส่วนหัว ๒ คอลัมน์ (ซ้าย ๘ ซม. ขวา ๘ ซม.) -->
+        <table class="gov-header-table">
           <tr>
-            <td style="width:65%;"><strong>ส่วนราชการ:</strong> สำนักงานเกษตรอำเภอพุทธมณฑล โทร. 0 3429 9258</td>
-            <td><strong>ที่:</strong> นฐ 0710/ว..........</td>
-          </tr>
-          <tr>
-            <td><strong>วันที่:</strong> .......... ตุลาคม 2569</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2"><strong>เรื่อง:</strong> ขอความเห็นชอบข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) รอบปี 2569 และประมาณการปี 2570 โดยวิธีหนังสือเวียน</td>
+            <td class="gov-header-col-left">ที่ นฐ ๐๗๐๙/ว ..........</td>
+            <td class="gov-header-col-right">
+              สำนักงานเกษตรอำเภอพุทธมณฑล<br>
+              ตำบลศาลายา อำเภอพุทธมณฑล<br>
+              จังหวัดนครปฐม ๗๓๑๗๐
+            </td>
           </tr>
         </table>
+
+        <!-- วัน เดือน ปี ตั้งแท็บที่ ๘.๐ ซม. (กึ่งกลางหน้ากระดาษ ตรงกับผ่ากลางตราครุฑ) -->
+        <div class="gov-date-row">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ตุลาคม&nbsp;&nbsp;๒๕๖๙
+        </div>
+
+        <table class="gov-meta-table">
+          <tr>
+            <td class="gov-meta-label">เรื่อง</td>
+            <td class="agenda-sub-desc"><strong>ขอเชิญประชุมเวียนคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ อำเภอพุทธมณฑล เพื่อพิจารณาให้ความเห็นชอบข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐</strong></td>
+          </tr>
+          <tr>
+            <td class="gov-meta-label">เรียน</td>
+            <td>คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพุทธมณฑล (ตามบัญชีรายชื่อแนบท้าย)</td>
+          </tr>
+          <tr>
+            <td class="gov-meta-label">สิ่งที่ส่งมาด้วย</td>
+            <td>
+              ๑. ระเบียบวาระการประชุมเวียนคณะทำงานฯ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน&nbsp;&nbsp;๑&nbsp;&nbsp;ชุด<br>
+              ๒. สรุปข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) ประจำปี ๒๕๖๙<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;และคาดการณ์ปี ๒๕๗๐ อำเภอพุทธมณฑล (๔๔ รายการ)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน&nbsp;&nbsp;๑&nbsp;&nbsp;ชุด
+            </td>
+          </tr>
+        </table>
+
+        <!-- ภาคเหตุ (ย่อหน้า ๒.๕ ซม.) -->
+        <p class="gov-p">
+          ด้วย สำนักงานเกษตรอำเภอพุทธมณฑล ในฐานะฝ่ายเลขานุการคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพุทธมณฑล ตามคำสั่งกระทรวงเกษตรและสหกรณ์ ที่ ๙๗๘/๒๕๖๔ ลงวันที่ ๒ พฤศจิกายน ๒๕๖๔ ได้ดำเนินการจัดทำข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) ประจำปี ๒๕๖๙ และข้อมูลประมาณการผลผลิต ปี ๒๕๗๐ รวมทั้งสิ้น <strong>๔๔ รายการสินค้า</strong> ครอบคลุมพื้นที่ตำบลคลองโยง ตำบลมหาสวัสดิ์ และตำบลศาลายา โดยประมวลผลจากระบบฐานข้อมูลทะเบียนเกษตรกร (farmer.doae.go.th) และระบบปฏิทินผลผลิตสินค้าเกษตร สำนักงานเศรษฐกิจการเกษตร (pcc.oae.go.th) ยอดผลผลิตรวมปี ๒๕๖๙ เท่ากับ <strong>๑๘,๑๑๔.๐๗ ตัน</strong> และยอดประมาณการปี ๒๕๗๐ เท่ากับ <strong>๑๗,๖๐๙.๒๒ ตัน</strong> เพื่อรวบรวมจัดส่งให้สำนักงานเกษตรจังหวัดนครปฐม นำเสนอคณะกรรมการขับเคลื่อนงานด้านการเกษตรระดับจังหวัดต่อไป
+        </p>
+
+        <!-- ภาคความประสงค์ (ย่อหน้า ๒.๕ ซม.) -->
+        <p class="gov-p">
+          เนื่องด้วยภารกิจและระยะเวลาในการปฏิบัติงานมีจำกัด และเพื่อเป็นการอำนวยความสะดวก ลดขั้นตอน และประหยัดเวลา สำนักงานเกษตรอำเภอพุทธมณฑล จึงขอปรับเปลี่ยนการประชุมจากรูปแบบเดิมเป็นการประชุมเวียน จึงขอส่งระเบียบวาระการประชุมเวียนและตารางข้อมูลปฏิทินผลผลิตสินค้าเกษตรดังกล่าว มายังท่านในฐานะคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพุทธมณฑล เพื่อโปรดพิจารณากลั่นกรองและให้ความเห็นชอบ ทั้งนี้ หากท่านมีข้อแก้ไขหรือข้อเสนอแนะประการใด โปรดแจ้งมายังสำนักงานเกษตรอำเภอพุทธมณฑล ทางโทรศัพท์หมายเลข <strong>๐-๒๔๔๑-๐๘๓๗</strong> หรือไปรษณีย์อิเล็กทรอนิกส์ <strong>phuttamonthon@doae.go.th</strong> ภายในวันที่ <strong>.......... ตุลาคม ๒๕๖๙ หากพ้นกำหนดวันดังกล่าวถือว่าท่านมีมติเห็นชอบตามที่เสนอ</strong>
+        </p>
+
+        <!-- ภาคสรุป (ย่อหน้า ๒.๕ ซม.) -->
+        <p class="gov-p-end">จึงเรียนมาเพื่อโปรดพิจารณา</p>
+
+        <!-- คำลงท้าย "ขอแสดงความนับถือ" วางแนวแท็บ ๘.๐ ซม. -->
+        <div class="gov-closing-block">
+          ขอแสดงความนับถือ
+          <div class="gov-sign-space"></div>
+          <div class="gov-signer-name">(นางสายสุนี&nbsp;&nbsp;ผลศรัทธา)</div>
+          <div>เกษตรอำเภอพุทธมณฑล</div>
+          <div>คณะทำงานและเลขานุการ คณะทำงานขับเคลื่อน</div>
+          <div>งานด้านการเกษตรระดับอำเภอพุทธมณฑล</div>
+        </div>
+
+        <!-- ส่วนราชการเจ้าของเรื่อง (มุมล่างซ้าย ชิดกั้นหน้า) -->
+        <div class="gov-contact-footer">
+          สำนักงานเกษตรอำเภอพุทธมณฑล<br>
+          โทร/โทรสาร ๐-๒๔๔๑-๐๘๓๗<br>
+          ไปรษณีย์อิเล็กทรอนิกส์: phuttamonthon@doae.go.th
+        </div>
       </div>
-    </div>
 
-    <p style="margin-top:14px;"><strong>เรียน</strong> คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอพุทธมณฑล</p>
+      <!-- Attached Distribution List (บัญชีรายชื่อคณะทำงาน ๑๑ ท่าน) -->
+      <div class="doc-page break">
+        <div class="agenda-title-block">
+          <h2>บัญชีรายชื่อคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ อำเภอพุทธมณฑล</h2>
+          <p style="color:#475569; font-size:15pt;">(แนบท้ายหนังสือสำนักงานเกษตรอำเภอพุทธมณฑล ที่ นฐ ๐๗๐๙/ว .......... ลงวันที่      ตุลาคม ๒๕๖๙)</p>
+        </div>
 
-    <p style="text-indent: 2.5em; margin-bottom: 8px;">
-      ตามที่ สำนักงานเศรษฐกิจการเกษตร (สศก.) ร่วมกับกรมส่งเสริมการเกษตร ได้กำหนดแนวทางการจัดทำปฏิทินผลผลิตสินค้าเกษตร (Crop Calendar) ประจำปี 2569 เพื่อเป็นข้อมูลชี้นำปริมาณผลผลิตรายเดือนและการบริหารจัดการด้านการเกษตรของจังหวัดนครปฐม โดยกำหนดให้คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ ดำเนินการกลั่นกรองและรับรองข้อมูลระดับตำบลและอำเภอให้แล้วเสร็จ ทั้ง<strong>ข้อมูลรอบปีปัจจุบัน (2569) และประมาณการปีถัดไป (2570)</strong> ก่อนนำส่งให้สำนักงานเกษตรจังหวัดนครปฐม นั้น
-    </p>
-
-    <p style="text-indent: 2.5em; margin-bottom: 8px;">
-      สำนักงานเกษตรอำเภอพุทธมณฑล ได้ประมวลผลข้อมูลการเพาะปลูกและผลผลิตพืชจากระบบฐานข้อมูลทะเบียนเกษตรกร (farmer.doae.go.th) และระบบปฏิทินผลผลิต สศก. (pcc.oae.go.th) ของตำบลคลองโยง มหาสวัสดิ์ และศาลายา รวมทั้งสิ้น <strong>44 รายการสินค้าเกษตร</strong> ยอดผลผลิตรวมปี 2569 เท่ากับ <strong>18,114.07 ตัน</strong> (แบ่งเป็นข้าวนาปี/นาปรัง 17,250 ตัน และพืชผัก/ไม้ผล 864.07 ตัน) และ<strong>ยอดประมาณการปี 2570 ปรับตามการวิเคราะห์สภาพภูมิอากาศและปัจจัยการผลิต รวม 17,609.22 ตัน (-504.85 ตัน / -2.79%)</strong> โดยสะท้อนความเสี่ยงภัยแล้ง-น้ำเค็มหนุนแม่น้ำท่าจีนในข้าวนาปรัง วงรอบผลัดใบพักต้นของไม้ผล และการขยายโรงเรือนผักยกแคร่ในพื้นที่
-    </p>
-
-    <p style="text-indent: 2.5em; margin-bottom: 12px;">
-      เพื่อให้การพิจารณาเป็นไปด้วยความรวดเร็วและอำนวยความสะดวกแก่คณะทำงานฯ จึงขอส่งข้อมูลปฏิทินผลผลิตและช่วงเวลาเก็บเกี่ยวรายเดือน ทั้งรอบปี 2569 และประมาณการปี 2570 เพื่อขอความเห็นชอบโดยวิธีหนังสือเวียน โดยท่านสามารถสแกน <strong>QR Code</strong> ด้านล่างนี้เพื่อเปิดดูระบบปฏิทินฉบับอินเทอร์แอคทีฟผ่านโทรศัพท์มือถือ หรือพิจารณาจากตารางสรุปแนบท้าย
-    </p>
-
-    <!-- QR Code Box -->
-    <div class="qr-hero-card">
-      <img src="data:image/png;base64,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" class="qr-img" alt="QR Code ทางเข้าเว็บปฏิทินผลผลิต">
-      <div class="qr-content">
-        <h4>📲 สแกนเปิดดูปฏิทินเก็บเกี่ยวและผลผลิตรายเดือน (ปี 2569 และคาดการณ์ 2570)</h4>
-        <p>เปิดดูผ่านสมาร์ทโฟน/แท็บเล็ตได้ทันที: มีกราฟสรุปรายเดือน, แถบเวลาเก็บเกี่ยว (Gantt Matrix), มุมมองเปรียบเทียบปี 2569 vs 2570, กรองดูแยกตามตำบล/กลุ่มพืช และรายละเอียดแปลงปลูก</p>
-        <div class="qr-url">🌐 หรือเข้าทาง: https://dragonfly13110.github.io/calendar-phutthamonthon/</div>
+        <table class="gov-dist-table">
+          <thead>
+            <tr>
+              <th style="width:1.5cm;">ที่</th>
+              <th>ชื่อ - สกุล / ตำแหน่งหลัก</th>
+              <th style="width:6.0cm;">ตำแหน่งในคณะทำงาน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;">๑.</td>
+              <td><strong>นายอิทธิพงศ์&nbsp;&nbsp;จักษ์ตรีมงคล</strong> (นายอำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">ประธานคณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๒.</td>
+              <td><strong>ปลัดอำเภอพุทธมณฑล</strong> (ที่ว่าการอำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๓.</td>
+              <td><strong>นายศักดิ์ดา&nbsp;&nbsp;สายหงษ์</strong> (ปศุสัตว์อำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๔.</td>
+              <td><strong>นางสาวสุจิตรา&nbsp;&nbsp;ลวณะสกล</strong> (นักวิชาการประมง / ผู้แทนประมงอำเภอ)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๕.</td>
+              <td><strong>นางสาวอรอุมา&nbsp;&nbsp;อึ้งประเสริฐภรณ์</strong> (พัฒนาการอำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๖.</td>
+              <td><strong>นายปราโมทย์&nbsp;&nbsp;มลคล้ำ</strong> (สาธารณสุขอำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๗.</td>
+              <td><strong>นางสาวเรณู&nbsp;&nbsp;อินทร์บุญ</strong> (นักวิชาการเกษตร / ผู้แทนศูนย์วิจัยและพัฒนาการเกษตรนครปฐม)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๘.</td>
+              <td><strong>นายธราธิป&nbsp;&nbsp;บุญบุตร</strong> (นักวิชาการเกษตรชำนาญการพิเศษ / ผู้แทนสถานีพัฒนาที่ดินนครปฐม)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๙.</td>
+              <td><strong>นายพรภิรมย์&nbsp;&nbsp;อ่อนสัมพันธุ์</strong> (ประธานคณะกรรมการอาสาสมัครเกษตรอำเภอ / อกม. / ศพก.)</td>
+              <td style="text-align:center;">คณะทำงาน</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๑๐.</td>
+              <td><strong>นางสายสุนี&nbsp;&nbsp;ผลศรัทธา</strong> (เกษตรอำเภอพุทธมณฑล)</td>
+              <td style="text-align:center;">คณะทำงานและเลขานุการ</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">๑๑.</td>
+              <td><strong>นางสาวศิรประภา&nbsp;&nbsp;สุวรรณมณี</strong> (นักวิชาการส่งเสริมการเกษตรชำนาญการ)</td>
+              <td style="text-align:center;">คณะทำงานและผู้ช่วยเลขานุการ</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </article>
 
-    <h4 style="color:#155e38; margin:16px 0 6px;">ประเด็นสำคัญที่ขอให้คณะทำงานฯ ตรวจสอบและให้ความเห็นชอบ:</h4>
-    <ol style="margin-left: 24px; padding-left: 0; line-height: 1.7; font-size:14px;">
-      <li><strong>การคาดการณ์ปี 2570 (17,609.22 ตัน):</strong> ปรับลดสุทธิ -2.79% ตามการวิเคราะห์ความเสี่ยงด้านน้ำต้นทุน/น้ำเค็มในข้าวนาปรัง (-3.47%) วงรอบพักต้นมะม่วง (-5% ถึง -6%) ส้มโอ (-3.5%) ในขณะที่พืชผักปลอดภัยยกแคร่และมะพร้าวน้ำหอมมีแนวโน้มเพิ่มขึ้น (+3% ถึง +4.5%) ข้อมูลได้บันทึกเข้าสู่ระบบ PCC เรียบร้อยแล้ว</li>
-      <li><strong>ข้าวนาปีและนาปรัง (17,250 ตัน):</strong> คิดจากผลผลิตเฉลี่ย 800 กก./ไร่ แบ่งเก็บเกี่ยว นาปรัง (ม.ค. 30%, ก.พ. 60%, มี.ค. 10%) และนาปี (ส.ค. 20%, ก.ย. 50%, ต.ค. 30%) ยอดปัดเป็นหลักสิบตัน</li>
-      <li><strong>พืชผักเก็บเกี่ยวต่อเนื่อง (กะเพรา, ผักชีฝรั่ง, ตะไคร้):</strong> ฐานผลผลิตรวมครอบคลุมทุกครั้งตัดตลอดทั้งปีแล้ว ไม่นำรอบมาคูณซ้ำ</li>
-      <li><strong>การตัดผลไม้นอกฤดู:</strong> มะม่วงเขียวเสวย/น้ำดอกไม้ (เก็บ มี.ค.–มิ.ย.) และลำไย (เก็บ มิ.ย.–ก.ย.) ตัดเดือนนอกฤดูเป็นศูนย์ตามรอบธรรมชาติจริง</li>
-      <li><strong>การกระจายผลผลิต:</strong> ข้าวขายนอกจังหวัด 80% ในจังหวัด 20% / พืชผักและไม้ผล ในจังหวัด 50% นอกจังหวัด 50%</li>
-    </ol>
+    <!-- ============================================================== -->
+    <!-- DOC 2: ระเบียบวาระการประชุมเวียน & แบบตอบรับลงมติ -->
+    <!-- ============================================================== -->
+    <article id="doc-agenda" class="doc-wrapper">
+      <div class="doc-page">
+        <div class="agenda-title-block">
+          <h2>ระเบียบวาระการประชุมเวียน</h2>
+          <p><strong>คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ อำเภอพุทธมณฑล</strong></p>
+          <p>ครั้งที่ ๑ ประจำปีงบประมาณ พ.ศ. ๒๕๗๐</p>
+          <p style="color:#475569;">ระหว่างวันที่ .......... ถึง .......... ตุลาคม  ๒๕๖๙</p>
+          <div style="border-bottom: 2px solid #000; width:120px; margin: 10px auto;"></div>
+        </div>
 
-    <p style="text-indent: 2.5em; margin-top: 12px;">
-      จึงเรียนมาเพื่อโปรดพิจารณา หากมีข้อเสนอแนะหรือมีมติเห็นชอบประการใด ขอความกรุณากรอกแบบตอบรับด้านล่างนี้ และส่งคืนสำนักงานเกษตรอำเภอพุทธมณฑล ภายในวันที่ .......... ตุลาคม 2569 เพื่อจักได้ดำเนินการส่งข้อมูลให้สำนักงานเกษตรจังหวัดนครปฐมต่อไป
-    </p>
+        <!-- วาระ ๑ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๑  เรื่องประธานแจ้งให้ที่ประชุมทราบ</div>
+          <div class="agenda-body">
+            <p style="margin:0 0 4pt; font-weight:bold;">๑.๑ คำสั่งแต่งตั้งคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ</p>
+            <p style="margin:0 0 6pt; text-indent:2.0cm;" class="agenda-sub-desc">
+              ด้วยกระทรวงเกษตรและสหกรณ์มีการปรับปรุงกลไกการขับเคลื่อนงานของกระทรวงเกษตรและสหกรณ์ เพื่อให้การดำเนินงานตามนโยบายของกระทรวงเกษตรและสหกรณ์ในระดับจังหวัดและระดับอำเภอ มีความเป็นเอกภาพ เป็นไปด้วยความรวดเร็ว และมีประสิทธิภาพมากยิ่งขึ้น กระทรวงเกษตรและสหกรณ์ จึงได้ยกเลิกคำสั่งกระทรวงเกษตรและสหกรณ์ ที่ ๙/๒๕๖๑ ลงวันที่ ๔ มกราคม ๒๕๖๑ และคำสั่งกระทรวงเกษตรและสหกรณ์ ที่ ๘๓๔/๒๕๖๑ ลงวันที่ ๑๙ กันยายน ๒๕๖๑ และแต่งตั้งคณะกรรมการขับเคลื่อนงานด้านการเกษตรระดับจังหวัด คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ และคณะกรรมการขับเคลื่อนงานด้านการเกษตรในเขตพื้นที่กรุงเทพมหานคร ตามคำสั่งกระทรวงเกษตรและสหกรณ์ ที่ ๙๗๘/๒๕๖๔ ลงวันที่ ๒ พฤศจิกายน ๒๕๖๔ (เอกสารแนบ ๑)
+            </p>
+            <div class="agenda-resolution-box" style="margin-top:2pt; margin-bottom:10pt;">
+              <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน (ข้อ ๑.๑):</div>
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+              </div>
+              <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+            </div>
 
-    <!-- Ballot Box -->
-    <div class="ballot-box">
-      <div class="ballot-title">แบบตอบรับการพิจารณาให้ความเห็นชอบปฏิทินผลผลิตสินค้าเกษตร อำเภอพุทธมณฑล</div>
-      <div class="ballot-options">
-        <div>[ &nbsp; ] <strong>เห็นชอบ</strong> ตามข้อมูลปฏิทินผลผลิตสินค้าเกษตรปี 2569 และประมาณการปี 2570 ที่เสนอ</div>
-        <div style="margin-top:6px;">[ &nbsp; ] <strong>เห็นชอบ โดยมีข้อแก้ไข/ข้อเสนอแนะเพิ่มเติม</strong> (ทั้งปี 2569 หรือคาดการณ์ปี 2570) ดังนี้:</div>
-        <div style="border-bottom: 1px dotted #94a3b8; height: 26px; margin-top: 4px;"></div>
-        <div style="border-bottom: 1px dotted #94a3b8; height: 26px; margin-top: 4px;"></div>
-      </div>
-      <div class="signature-area">
-        <div class="signature-block">
+            <p style="margin:8pt 0 4pt; font-weight:bold;">๑.๒ การจัดทำปฏิทินผลผลิตสินค้าเกษตรรายเดือนระดับตำบล ระดับอำเภอ ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐</p>
+            <p style="margin:0 0 4pt; text-indent:2.0cm;" class="agenda-sub-desc">
+              ด้วยสำนักงานเศรษฐกิจการเกษตรได้กำหนดให้มีการจัดทำปฏิทินผลผลิตสินค้าเกษตรระดับจังหวัดเป็นประจำทุกปี โดยมอบหมายให้สำนักงานเกษตรจังหวัด สำนักงานปศุสัตว์จังหวัด สำนักงานประมงจังหวัด และหน่วยงานในระดับอำเภอ จัดทำข้อมูลปฏิทินผลผลิตสินค้าเกษตรรายเดือนระดับตำบล อำเภอ จังหวัด และกลั่นกรองข้อมูลโดยใช้กลไกการจัดทำปฏิทินสินค้าเกษตร (เอกสารแนบ ๒)
+            </p>
+            <p style="margin:0 0 6pt; text-indent:2.0cm;" class="agenda-sub-desc">
+              การจัดทำปฏิทินฯ มีวัตถุประสงค์สำคัญ เพื่อให้หน่วยงานในพื้นที่มีข้อมูลสำหรับการบริหารจัดการด้านความมั่นคงทางอาหาร วางแผนการส่งเสริมเศรษฐกิจของชุมชน การวางแผนการผลิตให้สอดคล้องกับความต้องการของตลาด ตลอดจนการประเมินสถานการณ์เพื่อรับมือปัญหาราคาสินค้าล่วงหน้า และเป็นฐานข้อมูลให้หน่วยงานต่าง ๆ สามารถนำไปใช้ประโยชน์ได้ เช่น การใช้เป็นข้อมูลประมาณการผลิตภาพของเกษตรกรรายย่อยเพื่อสนับสนุนการเพิ่มผลิตภาพที่ดินและความมั่นคงอาหารสำหรับใช้เป็นเครื่องมือในการประเมินผลการปฏิบัติงานของคณะกรรมการนโยบายที่ดินแห่งชาติ (คทช.) เป็นต้น
+            </p>
+            <div class="agenda-resolution-box" style="margin-top:2pt;">
+              <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน (ข้อ ๑.๒):</div>
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+              </div>
+              <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- วาระ ๒ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๒  เรื่องรับรองรายงานการประชุม</div>
+          <div class="agenda-body">
+            - ไม่มี เนื่องจากเป็นการประชุมครั้งที่ ๑ ประจำปีงบประมาณ พ.ศ. ๒๕๗๐ -
+          </div>
+          <div class="agenda-resolution-box">
+            <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน:</div>
+            <div class="agenda-ballot-row">
+              <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+            </div>
+            <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+          </div>
+        </div>
+
+        <!-- วาระ ๓ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๓  เรื่องสืบเนื่องจากการประชุมครั้งที่แล้ว</div>
+          <div class="agenda-body">
+            - ไม่มี -
+          </div>
+          <div class="agenda-resolution-box">
+            <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน:</div>
+            <div class="agenda-ballot-row">
+              <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+            </div>
+            <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+          </div>
+        </div>
+
+        <!-- วาระ ๔ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๔  เรื่องแจ้งเพื่อทราบ</div>
+          <div class="agenda-body">
+            <p style="margin:0 0 4pt; font-weight:bold;">๔.๑ แนวทางการจัดทำปฏิทินผลผลิตสินค้าเกษตรรายเดือนระดับตำบล ระดับอำเภอ ประจำปี ๒๕๖๙</p>
+            <p style="margin:0 0 3pt; text-indent:1.0cm;" class="agenda-sub-desc"><strong>ชนิดสินค้าที่รายงาน ประกอบด้วย</strong></p>
+            <p style="margin:0 0 3pt; text-indent:1.5cm;" class="agenda-sub-desc">๑. สินค้าเกษตรที่เป็นอาหารสำหรับมนุษย์บริโภค และอาหารสัตว์ ทุกชนิดที่จังหวัด/อำเภอมีข้อมูลการผลิต ทั้งพืช ปศุสัตว์ ประมง และแมลงเศรษฐกิจ ได้แก่</p>
+            <p style="margin:0 0 2pt; text-indent:2.0cm;" class="agenda-sub-desc">๑.๑ <strong>สินค้าพืช</strong> ประกอบด้วย ๓ กลุ่มสินค้า คือ สินค้าพื้นฐาน สินค้าทางเลือก และสินค้าเกษตรอัตลักษณ์พื้นถิ่น</p>
+            <p style="margin:0 0 2pt; text-indent:2.0cm;" class="agenda-sub-desc">๑.๒ <strong>สินค้าปศุสัตว์</strong> ประกอบด้วย ปศุสัตว์ที่บริโภคผลผลิต (ไข่ไก่ ไข่เป็ด ไข่นกกระทา น้ำนมโคดิบ น้ำนมแพะดิบ) และปศุสัตว์ที่บริโภคเนื้อ (ไก่เนื้อ ไก่พื้นเมือง เป็ดเนื้อ เป็ดเทศ สุกรขุน โคเนื้อ กระบือ แพะ แกะ)</p>
+            <p style="margin:0 0 4pt; text-indent:2.0cm;" class="agenda-sub-desc">๑.๓ <strong>สินค้าประมง</strong> ประกอบด้วย สัตว์น้ำเค็ม และสัตว์น้ำจืด</p>
+            <p style="margin:0 0 4pt; text-indent:1.0cm;" class="agenda-sub-desc">
+              <strong>ข้อมูลที่รายงาน:</strong> เป็นข้อมูลระดับตำบล (สินค้าพืช/แมลง) ข้อมูลระดับอำเภอ (สินค้าปศุสัตว์/ประมง) ที่หน่วยงานในพื้นที่มีการจัดเก็บข้อมูล ประกอบด้วย จำนวนเกษตรกร เนื้อที่เพาะปลูก/เนื้อที่ยืนต้น เนื้อที่เก็บเกี่ยว/เนื้อที่ให้ผล ผลผลิตต่อไร่ การกระจายสินค้า ปริมาณผลผลิตรวมทั้งรายปีและรายเดือน และการคาดการณ์ปริมาณผลผลิตรวมทั้งปีและรายเดือนในปีการผลิตถัดไป โดยพิจารณาจากปัจจัยต่างๆ ที่อาจส่งผลกระทบต่อการตัดสินใจเพาะปลูกของเกษตรกร เช่น แนวโน้มราคาสินค้า ความต้องการผลผลิต ต้นทุนการผลิต สถานการณ์การแข่งขัน ภาวะภัยธรรมชาติ สภาพภูมิอากาศ และการบริหารจัดการน้ำ เป็นต้น
+            </p>
+
+            <p style="margin:8pt 0 4pt; font-weight:bold;">๔.๒ ระบบสืบค้นข้อมูลปฏิทินผลผลิตสินค้าเกษตรออนไลน์ อำเภอพุทธมณฑล</p>
+            <p style="margin:0 0 6pt; text-indent:2.0cm;" class="agenda-sub-desc">
+              สำนักงานเกษตรอำเภอพุทธมณฑลได้จัดทำระบบปฏิทินผลผลิตสินค้าเกษตรออนไลน์ (Crop Calendar Online) ผ่านเว็บไซต์ <strong>https://dragonfly13110.github.io/calendar-phutthamonthon/</strong> และ QR Code เพื่ออำนวยความสะดวกแก่คณะทำงานฯ ในการเข้าถึงข้อมูลผลผลิตรายเดือน กราฟแนวโน้ม และปัจจัยวิเคราะห์สภาพภูมิอากาศของทั้ง ๓ ตำบล ได้สะดวกรวดเร็วผ่านอุปกรณ์คอมพิวเตอร์และโทรศัพท์มือถือ
+            </p>
+          </div>
+          <div class="agenda-resolution-box">
+            <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน:</div>
+            <div class="agenda-ballot-row">
+              <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+            </div>
+            <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+          </div>
+        </div>
+
+        <!-- วาระ ๕ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๕  เรื่องเพื่อพิจารณา</div>
+          <div class="agenda-body">
+            <p style="margin:0 0 4pt; font-weight:bold;">๕.๑ ปฏิทินผลผลิตสินค้าเกษตรระดับตำบล และระดับอำเภอด้านพืช ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐ (เอกสารแนบ ๓)</p>
+            <p style="margin:0 0 4pt; text-indent:2.0cm;" class="agenda-sub-desc">
+              สำนักงานเกษตรอำเภอพุทธมณฑล ในฐานะฝ่ายเลขานุการฯ ได้ดำเนินการประมวลผลข้อมูลปฏิทินผลผลิตสินค้าเกษตรด้านพืช ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐ รวมทั้งสิ้น <strong>๔๔ รายการสินค้า</strong> ครอบคลุมพื้นที่ตำบลคลองโยง ตำบลมหาสวัสดิ์ และตำบลศาลายา จากระบบฐานข้อมูลทะเบียนเกษตรกร (farmer.doae.go.th) และระบบปฏิทินผลผลิตสินค้าเกษตร สศก. (pcc.oae.go.th) ยอดผลผลิตรวมปี ๒๕๖๙ เท่ากับ <strong>๑๘,๑๑๔.๐๗ ตัน</strong> และยอดประมาณการปี ๒๕๗๐ เท่ากับ <strong>๑๗,๖๐๙.๒๒ ตัน</strong> (ปรับลดลงสุทธิ -๕๐๔.๘๕ ตัน หรือ -๒.๗๙%) ซึ่งปรับลดสะท้อนสภาวะภูมิอากาศจริง จึงขอเสนอคณะทำงานฯ เพื่อโปรดพิจารณากลั่นกรองและให้ความเห็นชอบ โดยแยกตามกลุ่มสินค้าเกษตรสำคัญ ดังนี้:
+            </p>
+          </div>
+
+          <!-- 5.1 ข้าว -->
+          <div style="margin-left: 1.0cm; margin-bottom: 10pt;">
+            <p style="margin:0 0 2pt;"><strong>๕.๑.๑) ด้านข้าว (ข้าวนาปีและข้าวนาปรัง รวม ๖ รายการ ยอดปี ๖๙: ๑๗,๒๕๐ ตัน / ประมาณการ ๗๐: ๑๖,๗๔๐ ตัน)</strong></p>
+            <p class="agenda-sub-desc" style="margin:0 0 4pt; font-size:14pt; color:#475569;">
+              * คิดจากผลผลิตเฉลี่ย ๘๐๐ กก./ไร่ แบ่งเก็บเกี่ยวนาปรัง (ม.ค. ๓๐%, ก.พ. ๖๐%, มี.ค. ๑๐%) และนาปี (ส.ค. ๒๐%, ก.ย. ๕๐%, ต.ค. ๓๐%) การคาดการณ์ปี ๒๕๗๐ ปรับลด (-๕๑๐ ตัน หรือ -๒.๙๖%) ตามความเสี่ยงมาตรการคุมน้ำต้นทุนลุ่มเจ้าพระยา-ท่าจีน และลิ่มความเค็มรุกคลองช่วง ก.พ.-มี.ค.
+            </p>
+            <div class="agenda-resolution-box" style="margin-left: 0;">
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] เห็นชอบ</label>
+                <label><input type="checkbox"> [ &nbsp; ] ไม่เห็นชอบ</label>
+              </div>
+              <div>ข้อเสนอแนะ/แก้ไข: <span class="dotted-fill"></span></div>
+            </div>
+          </div>
+
+          <!-- 5.2 พืชผัก -->
+          <div style="margin-left: 1.0cm; margin-bottom: 10pt;">
+            <p style="margin:0 0 2pt;"><strong>๕.๑.๒) ด้านพืชผักปลอดภัยและสมุนไพร (กะเพรา, ผักชีฝรั่ง, ตะไคร้, ตำลึง, พริกขี้หนู ฯลฯ รวม ๑๕ รายการ)</strong></p>
+            <p class="agenda-sub-desc" style="margin:0 0 4pt; font-size:14pt; color:#475569;">
+              * ฐานผลผลิตครอบคลุมทุกครั้งตัดตลอดปีแล้ว ไม่นำรอบมาคูณซ้ำ ยอดปี ๖๙: ๔๒๗.๐๐ ตัน ประมาณการปี ๗๐: ๔๓๘.๔๗ ตัน (+๑๑.๔๗ ตัน หรือ +๒.๖๙%) จากการขยายโรงเรือนผักยกแคร่และระบบพรางแสง
+            </p>
+            <div class="agenda-resolution-box" style="margin-left: 0;">
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] เห็นชอบ</label>
+                <label><input type="checkbox"> [ &nbsp; ] ไม่เห็นชอบ</label>
+              </div>
+              <div>ข้อเสนอแนะ/แก้ไข: <span class="dotted-fill"></span></div>
+            </div>
+          </div>
+
+          <!-- 5.3 ไม้ผล -->
+          <div style="margin-left: 1.0cm; margin-bottom: 10pt;">
+            <p style="margin:0 0 2pt;"><strong>๕.๑.๓) ด้านไม้ผลยืนต้น (ส้มโอ, มะพร้าวน้ำหอม, มะม่วง, ฝรั่ง, ชมพู่, กล้วยน้ำว้า, ลำไย ฯลฯ รวม ๑๕ รายการ)</strong></p>
+            <p class="agenda-sub-desc" style="margin:0 0 4pt; font-size:14pt; color:#475569;">
+              * ตัดผลผลิตนอกฤดูเป็นศูนย์ตามรอบธรรมชาติจริง ยอดปี ๖๙: ๓๒๒.๑๙ ตัน ประมาณการปี ๗๐: ๓๑๕.๕๐ ตัน (-๖.๖๙ ตัน หรือ -๒.๐๘%) ตามวงรอบผลัดใบพักต้น (Alternate bearing) ของมะม่วงและส้มโอ ขณะที่มะพร้าวน้ำหอมให้ผลผลิตเพิ่มขึ้น (+๔.๖%)
+            </p>
+            <div class="agenda-resolution-box" style="margin-left: 0;">
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] เห็นชอบ</label>
+                <label><input type="checkbox"> [ &nbsp; ] ไม่เห็นชอบ</label>
+              </div>
+              <div>ข้อเสนอแนะ/แก้ไข: <span class="dotted-fill"></span></div>
+            </div>
+          </div>
+
+          <!-- 5.4 ไม้ดอกไม้ประดับ -->
+          <div style="margin-left: 1.0cm; margin-bottom: 10pt;">
+            <p style="margin:0 0 2pt;"><strong>๕.๑.๔) ด้านไม้ยืนต้น ไม้ดอกไม้ประดับ และพืชอื่นๆ (บัวหลวงตัดดอก, หมาก, ไผ่ตง ฯลฯ รวม ๘ รายการ)</strong></p>
+            <p class="agenda-sub-desc" style="margin:0 0 4pt; font-size:14pt; color:#475569;">
+              * บัวหลวงตัดดอกตำบลคลองโยงและมหาสวัสดิ์ เก็บเกี่ยวต่อเนื่องตลอดปี ยอดปี ๖๙: ๑๑๔.๘๘ ตัน ประมาณการปี ๗๐: ๑๑๕.๒๕ ตัน (+๐.๓๗ ตัน หรือ +๐.๓๒%) ผลผลิตสม่ำเสมอตามความต้องการตลาด
+            </p>
+            <div class="agenda-resolution-box" style="margin-left: 0;">
+              <div class="agenda-ballot-row">
+                <label><input type="checkbox"> [ &nbsp; ] เห็นชอบ</label>
+                <label><input type="checkbox"> [ &nbsp; ] ไม่เห็นชอบ</label>
+              </div>
+              <div>ข้อเสนอแนะ/แก้ไข: <span class="dotted-fill"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- วาระ ๖ -->
+        <div class="agenda-item">
+          <div class="agenda-header">ระเบียบวาระที่ ๖  เรื่องอื่น ๆ</div>
+          <div class="agenda-body">- ไม่มี -</div>
+          <div class="agenda-resolution-box">
+            <div style="font-weight:bold; margin-bottom:4pt;">มติที่ประชุมเวียน:</div>
+            <div class="agenda-ballot-row">
+              <label><input type="checkbox"> [ &nbsp; ] รับทราบ</label>
+            </div>
+            <div>ข้อเสนอแนะเพิ่มเติม: <span class="dotted-fill"></span></div>
+          </div>
+        </div>
+
+        <!-- ส่วนลงลายมือชื่อกรรมการผู้ออกเสียงมติ -->
+        <div class="ballot-signature-block">
           ลงชื่อ ................................................................<br>
           (................................................................)<br>
           ตำแหน่ง ................................................................<br>
-          วันที่ ........ / .................... / 2569
+          หน่วยงาน ................................................................<br>
+          วันที่ ........ เดือน ........................ พ.ศ. ๒๕๖๙
+        </div>
+
+        <div class="agenda-sub-desc" style="border-top:1px dashed #94a3b8; margin-top:18pt; padding-top:8pt; font-size:14pt; color:#475569;">
+          <strong>หมายเหตุ:</strong> เมื่อคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ ดำเนินการพิจารณาเสร็จเรียบร้อยแล้ว กรุณาส่งผลการพิจารณาคืนให้สำนักงานเกษตรอำเภอพุทธมณฑล ทางโทรศัพท์/โทรสาร <strong>๐-๒๔๔๑-๐๘๓๗</strong> หรือ E-mail: <strong>phuttamonthon@doae.go.th</strong> ภายในวันที่ <strong>.......... ตุลาคม ๒๕๖๙ หากพ้นกำหนดวันดังกล่าวถือว่าท่านมีมติเห็นชอบตามที่เสนอ</strong>
         </div>
       </div>
-    </div>
-  </div>
+    </article>
 
-  <!-- Page 2: Table Breakdown -->
-  <div class="doc-page break">
-    <h2 style="font-size:19px; color:#155e38; margin:0 0 6px; text-align:center;">
-      เอกสารแนบ: ตารางปฏิทินช่วงเก็บเกี่ยวและปริมาณผลผลิตรายเดือน ปี 2569 และคาดการณ์ปี 2570 (44 รายการ)
-    </h2>
-    <p style="text-align:center; font-size:13px; color:#64748b; margin-bottom:12px;">
-      อำเภอพุทธมณฑล จังหวัดนครปฐม • ข้อมูลรายสินค้า 3 ตำบล เปรียบเทียบปี 2569 vs คาดการณ์ 2570 (PCC สศก.)
-    </p>
+    <!-- ============================================================== -->
+    <!-- DOC 3: ตารางปฏิทินผลผลิต ๔๔ สินค้า (เอกสารแนบ) -->
+    <!-- ============================================================== -->
+    <article id="doc-table" class="doc-wrapper">
+      <div class="doc-page landscape-page">
+        <h2 style="font-size:18pt; color:#155e38; margin:0 0 4pt; text-align:center; font-weight:bold;">
+          เอกสารแนบ: ตารางปฏิทินช่วงเก็บเกี่ยวและปริมาณผลผลิตรายเดือน ปี ๒๕๖๙ และคาดการณ์ปี ๒๕๗๐ (๔๔ รายการ)
+        </h2>
+        <p style="text-align:center; font-size:14pt; color:#64748b; margin-bottom:12pt;">
+          อำเภอพุทธมณฑล จังหวัดนครปฐม • ข้อมูลรายสินค้า ๓ ตำบล เปรียบเทียบปี ๒๕๖๙ vs คาดการณ์ ๒๕๗๐ (PCC สศก.)
+        </p>
 
-    <!-- Interactive View Controls -->
-    <div class="view-controls">
-      <div class="view-controls-header">
-        <div class="view-controls-title">📌 รูปแบบการแสดงผลตารางปฏิทิน (คลิกสลับมุมมองได้):</div>
-        <div style="font-size:12px; color:#64748b;">(โหมดเริ่มต้น: แสดงเปรียบเทียบทั้ง 2 ปีพร้อมกัน เหมาะสำหรับตรวจทานและพิมพ์รายงาน)</div>
-      </div>
-      <div class="view-tabs">
-        <button class="tab-btn active" id="tab-compare" onclick="switchTableView('compare')">📊 เปรียบเทียบ 2 ปี (แถวคู่ 2569 vs 2570 พร้อมผลต่าง)</button>
-        <button class="tab-btn" id="tab-2569" onclick="switchTableView('2569')">🌱 ปฏิทินรอบปี 2569 (ผลผลิตและรายเดือน 2569)</button>
-        <button class="tab-btn" id="tab-2570" onclick="switchTableView('2570')">📈 ปฏิทินคาดการณ์ปี 2570 (ผลผลิตและรายเดือน 2570 ตามระบบ PCC)</button>
-      </div>
-    </div>
+        <!-- QR Code Hero Box -->
+        <div class="qr-hero-card">
+          <img src="qr-calendar.svg" class="qr-img" alt="QR Code">
+          <div class="qr-content">
+            <h4>📲 สแกนเปิดดูปฏิทินเก็บเกี่ยวและผลผลิตรายเดือน (ปี ๒๕๖๙ และคาดการณ์ ๒๕๗๐)</h4>
+            <p>เปิดดูผ่านสมาร์ทโฟน/แท็บเล็ตได้ทันที: มีกราฟสรุปรายเดือน, แถบเวลาเก็บเกี่ยว (Gantt Matrix), มุมมองเปรียบเทียบปี ๒๕๖๙ vs ๒๕๗๐, กรองดูแยกตามตำบล/กลุ่มพืช และรายละเอียดแปลงปลูก</p>
+            <div class="qr-url">🌐 หรือเข้าทาง: https://dragonfly13110.github.io/calendar-phutthamonthon/</div>
+          </div>
+        </div>
 
-    
-    <div class="tambon-section" id="section-คลองโยง">
+        <!-- Interactive View Controls -->
+        <div class="view-controls">
+          <div class="view-controls-header">
+            <div class="view-controls-title">📌 รูปแบบการแสดงผลตารางปฏิทิน (คลิกสลับมุมมองได้):</div>
+            <div style="font-size:12px; color:#64748b;">(โหมดเริ่มต้น: แสดงเปรียบเทียบทั้ง 2 ปีพร้อมกัน เหมาะสำหรับตรวจทานและพิมพ์รายงาน)</div>
+          </div>
+          <div class="view-tabs">
+            <button class="tab-btn active" id="tab-compare" onclick="switchTableView('compare')">📊 เปรียบเทียบ 2 ปี (แถวคู่ ๒๕๖๙ vs ๒๕๗๐ พร้อมผลต่าง)</button>
+            <button class="tab-btn" id="tab-2569" onclick="switchTableView('2569')">🌱 ปฏิทินรอบปี ๒๕๖๙ (ผลผลิตและรายเดือน ๒๕๖๙)</button>
+            <button class="tab-btn" id="tab-2570" onclick="switchTableView('2570')">📈 ปฏิทินคาดการณ์ปี ๒๕๗๐ (ผลผลิตและรายเดือน ๒๕๗๐ ตามระบบ PCC)</button>
+          </div>
+        </div>
+
+        <!-- INJECTED CROP TABLES -->
+        <div class="tambon-section" id="section-คลองโยง">
       <h3 class="tambon-header">
         <span>ตำบลคลองโยง (18 รายการสินค้า)</span>
         <span class="sub-caption">หน่วยผลผลิต: ตัน (สถิติเกษตรกร: ครัวเรือน / ไร่)</span>
@@ -1708,12 +2356,128 @@
       
         </tbody>
       </table>
-    </div>
-  </div>
+
+      </div>
+    </article>
+
+    <!-- ============================================================== -->
+    <!-- DOC 4: (ร่าง) รายงานการประชุมเวียน (Minutes of Circular Meeting) -->
+    <!-- ============================================================== -->
+    <article id="doc-minutes" class="doc-wrapper">
+      <div class="doc-page">
+        <div class="agenda-title-block">
+          <h2>รายงานการประชุมเวียน</h2>
+          <p><strong>คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ อำเภอพุทธมณฑล</strong></p>
+          <p>ครั้งที่ ๑ ประจำปีงบประมาณ พ.ศ. ๒๕๗๐</p>
+          <p style="color:#475569;">เมื่อวันที่ .......... ตุลาคม ๒๕๖๙</p>
+          <div style="border-bottom: 2px solid #000; width:120px; margin: 10px auto;"></div>
+        </div>
+
+        <p style="font-weight:bold; margin-bottom:6pt;">รายชื่อคณะทำงานผู้แจ้งผลการประชุมเวียน (จำนวน ๑๑ ท่าน):</p>
+        <ol style="margin-left: 1.0cm; line-height: 1.4; font-size: 15pt;">
+          <li>นายอิทธิพงศ์&nbsp;&nbsp;จักษ์ตรีมงคล (นายอำเภอพุทธมณฑล) — ประธานคณะทำงาน</li>
+          <li>ปลัดอำเภอพุทธมณฑล (ที่ว่าการอำเภอพุทธมณฑล) — คณะทำงาน</li>
+          <li>นายศักดิ์ดา&nbsp;&nbsp;สายหงษ์ (ปศุสัตว์อำเภอพุทธมณฑล) — คณะทำงาน</li>
+          <li>นางสาวสุจิตรา&nbsp;&nbsp;ลวณะสกล (นักวิชาการประมง / ผู้แทนประมงอำเภอ) — คณะทำงาน</li>
+          <li>นางสาวอรอุมา&nbsp;&nbsp;อึ้งประเสริฐภรณ์ (พัฒนาการอำเภอพุทธมณฑล) — คณะทำงาน</li>
+          <li>นายปราโมทย์&nbsp;&nbsp;มลคล้ำ (สาธารณสุขอำเภอพุทธมณฑล) — คณะทำงาน</li>
+          <li>นางสาวเรณู&nbsp;&nbsp;อินทร์บุญ (นักวิชาการเกษตร / ผู้แทน ศวพ.นครปฐม) — คณะทำงาน</li>
+          <li>นายธราธิป&nbsp;&nbsp;บุญบุตร (นักวิชาการเกษตรชำนาญการพิเศษ / ผู้แทน สพด.นครปฐม) — คณะทำงาน</li>
+          <li>นายพรภิรมย์&nbsp;&nbsp;อ่อนสัมพันธุ์ (ประธานคณะกรรมการอาสาสมัครเกษตรอำเภอ) — คณะทำงาน</li>
+          <li>นางสายสุนี&nbsp;&nbsp;ผลศรัทธา (เกษตรอำเภอพุทธมณฑล) — คณะทำงานและเลขานุการ</li>
+          <li>นางสาวศิรประภา&nbsp;&nbsp;สุวรรณมณี (นักวิชาการส่งเสริมการเกษตรชำนาญการ) — คณะทำงานและผู้ช่วยเลขานุการ</li>
+        </ol>
+
+        <div style="margin-top: 18pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๑  เรื่องประธานแจ้งให้ที่ประชุมทราบ</div>
+          <div class="agenda-body">ฝ่ายเลขานุการฯ ได้แจ้งคำสั่งกระทรวงเกษตรและสหกรณ์ ที่ ๙๗๘/๒๕๖๔ ลงวันที่ ๒ พฤศจิกายน ๒๕๖๔ เรื่อง แต่งตั้งคณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ และชี้แจงแนวทางการจัดทำปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (Crop Calendar) ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐ ของ สศก. และกรมส่งเสริมการเกษตร เพื่อให้คณะทำงานระดับอำเภอกลั่นกรองและรับรองข้อมูลส่งจังหวัดนครปฐม</div>
+          <div style="margin-left:2.5cm; font-weight:bold; color:#166534;">มติที่ประชุมเวียน: รับทราบ</div>
+        </div>
+
+        <div style="margin-top: 14pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๒  เรื่องรับรองรายงานการประชุม</div>
+          <div class="agenda-body">- ไม่มี เนื่องจากเป็นการประชุมครั้งที่ ๑ ประจำปีงบประมาณ พ.ศ. ๒๕๗๐ -</div>
+          <div style="margin-left:2.5cm; font-weight:bold; color:#166534;">มติที่ประชุมเวียน: รับทราบ</div>
+        </div>
+
+        <div style="margin-top: 14pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๓  เรื่องสืบเนื่องจากการประชุมครั้งที่แล้ว</div>
+          <div class="agenda-body">- ไม่มี -</div>
+          <div style="margin-left:2.5cm; font-weight:bold; color:#166534;">มติที่ประชุมเวียน: รับทราบ</div>
+        </div>
+
+        <div style="margin-top: 14pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๔  เรื่องแจ้งเพื่อทราบ</div>
+          <div class="agenda-body">ฝ่ายเลขานุการฯ ได้ชี้แจงแนวทางการจัดทำปฏิทินผลผลิตสินค้าเกษตรรายเดือนระดับตำบล ระดับอำเภอ ประจำปี ๒๕๖๙ (จำแนกสินค้าพืช ๓ กลุ่ม คือ สินค้าพื้นฐาน สินค้าทางเลือก และสินค้าอัตลักษณ์พื้นถิ่น และเกณฑ์ตัวแปรการจัดเก็บระดับตำบล) พร้อมทั้งรายงานการเปิดใช้งานระบบปฏิทินผลผลิตออนไลน์ (Crop Calendar Online) ผ่านเว็บไซต์ https://dragonfly13110.github.io/calendar-phutthamonthon/ และ QR Code เพื่ออำนวยความสะดวกแก่คณะทำงานฯ ในการตรวจสอบข้อมูลผลผลิตรายเดือนและวิเคราะห์สภาพภูมิอากาศ</div>
+          <div style="margin-left:2.5cm; font-weight:bold; color:#166534;">มติที่ประชุมเวียน: รับทราบ</div>
+        </div>
+
+        <div style="margin-top: 14pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๕  เรื่องเพื่อพิจารณา</div>
+          <div class="agenda-body">การพิจารณาให้ความเห็นชอบข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) ประจำปี ๒๕๖๙ และประมาณการปี ๒๕๗๐ รวมทั้งสิ้น ๔๔ รายการสินค้า อำเภอพุทธมณฑล จังหวัดนครปฐม</div>
+          <div class="agenda-sub-desc" style="margin-left:2.5cm; font-weight:bold; color:#15803d; background:#dcfce7; padding:8pt 12pt; border-radius:4px; border:1px solid #86efac; line-height:1.35;">
+            มติที่ประชุมเวียน: คณะทำงานขับเคลื่อนงานด้านการเกษตรระดับอำเภอ อำเภอพุทธมณฑล ทั้ง ๑๑ ท่าน ได้พิจารณากลั่นกรองแล้ว มีมติ "เห็นชอบ" ข้อมูลปฏิทินผลผลิตสินค้าเกษตรระดับอำเภอ (พืช) ประจำปี ๒๕๖๙ (จำนวน ๑๘,๑๑๔.๐๗ ตัน) และข้อมูลประมาณการผลผลิต ปี ๒๕๗๐ (จำนวน ๑๗,๖๐๙.๒๒ ตัน) รวมทั้งสิ้น ๔๔ รายการสินค้า ของอำเภอพุทธมณฑล โดยไม่มีข้อแก้ไข และมอบหมายให้สำนักงานเกษตรอำเภอพุทธมณฑล ในฐานะฝ่ายเลขานุการฯ ดำเนินการจัดส่งข้อมูลพร้อมบันทึกยืนยันในระบบ PCC ส่งให้สำนักงานเกษตรจังหวัดนครปฐม เพื่อนำเสนอคณะกรรมการขับเคลื่อนงานด้านการเกษตรระดับจังหวัดต่อไป
+          </div>
+        </div>
+
+        <div style="margin-top: 14pt;">
+          <div class="agenda-header">ระเบียบวาระที่ ๖  เรื่องอื่น ๆ</div>
+          <div class="agenda-body">- ไม่มี -</div>
+          <div style="margin-left:2.5cm; font-weight:bold; color:#166534;">มติที่ประชุมเวียน: รับทราบ</div>
+        </div>
+
+        <!-- Signatures of Minutes Recorder & Approver (๒ คอลัมน์) -->
+        <table style="width:100%; border-collapse:collapse; margin-top:35pt; text-align:center; font-size:15pt; line-height:1.35;">
+          <tr>
+            <td style="width:50%; vertical-align:top;">
+              ลงชื่อ ................................................................<br>
+              (นางสาวศิรประภา&nbsp;&nbsp;สุวรรณมณี)<br>
+              นักวิชาการส่งเสริมการเกษตรชำนาญการ<br>
+              กรรมการและผู้ช่วยเลขานุการ<br>
+              ผู้บันทึกรายงานการประชุมเวียน
+            </td>
+            <td style="width:50%; vertical-align:top;">
+              ลงชื่อ ................................................................<br>
+              (นางสายสุนี&nbsp;&nbsp;ผลศรัทธา)<br>
+              เกษตรอำเภอพุทธมณฑล<br>
+              กรรมการและเลขานุการ<br>
+              ผู้ตรวจรายงานการประชุมเวียน
+            </td>
+          </tr>
+        </table>
+      </div>
+    </article>
+
+  </main>
 
   <script>
+    function switchDoc(docId) {
+      const buttons = document.querySelectorAll('.doc-tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+
+      const articles = document.querySelectorAll('.doc-wrapper');
+      
+      if (docId === 'all') {
+        articles.forEach(a => a.style.display = 'block');
+        buttons.forEach(b => {
+          if (b.innerText.includes('แสดงทุกฉบับ')) b.classList.add('active');
+        });
+      } else {
+        articles.forEach(a => {
+          if (a.id === docId) {
+            a.style.display = 'block';
+          } else {
+            a.style.display = 'none';
+          }
+        });
+        buttons.forEach(b => {
+          if (b.getAttribute('onclick').includes(docId)) b.classList.add('active');
+        });
+      }
+    }
+
     function switchTableView(mode) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-tabs .tab-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById('tab-' + mode);
       if (activeBtn) activeBtn.classList.add('active');
 
@@ -1737,10 +2501,23 @@
         } else if (mode === '2570') {
           rows69.forEach(r => r.style.display = 'none');
           rows70.forEach(r => r.style.display = '');
+          sharedCells.forEach(td => td.setAttribute('rowspan', '1'));
           only70Cells.forEach(td => td.style.display = '');
         }
       });
     }
+
+    function checkHashAndSwitch() {
+      const hash = window.location.hash.replace('#', '');
+      if (['doc-letter', 'doc-agenda', 'doc-table', 'doc-minutes', 'all'].includes(hash)) {
+        switchDoc(hash);
+      } else {
+        switchDoc('doc-letter');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', checkHashAndSwitch);
+    window.addEventListener('hashchange', checkHashAndSwitch);
   </script>
 </body>
 </html>
